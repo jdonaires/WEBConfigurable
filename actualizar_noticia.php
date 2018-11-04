@@ -1,3 +1,41 @@
+
+
+<?php
+require_once('PHP/BOL/Noticias.php');
+require_once('PHP/DAO/NoticiasDAO.php');
+
+$per = new Noticias();
+$perDAO = new NoticiasDAO();
+
+if(isset($_POST['BtnGuardar']))
+{
+	echo  $_POST['TxtDescripcion'];
+	$per->__SET('IdNoticias', "0");
+	$per->__SET('TituloNoticia', $_POST['TxtTituloNoticia']);
+	$per->__SET('Descripcion',        $_POST['TxtDescripcion']);
+	$per->__SET('Imagen', $_POST['TxtImagen']);
+	$per->__SET('URL', $_POST['TxtURL']);
+	$per->__SET('Posicion', $_POST['TxtPosicion']);
+	$per->__SET('IdUsuario', "1");
+	$per->__SET('Opcion', "I");
+	
+	
+
+	$perDAO->Registrar($per);
+	
+	
+
+}
+
+
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,11 +158,11 @@
 				    	Registro Noticia
 				  </div>
 				  <div class="card-body">
-				    <form>
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">Titulo de la Noticia:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="titulo" placeholder="Titulo de la Noticia">
+					      		<input type="text" class="form-control" id="titulo" placeholder="Titulo de la Noticia" name="TxtTituloNoticia">
 								</div>
 							
 
@@ -132,7 +170,7 @@
 					  	<div class="form-group row">
 					    	<label for="descripcion" class="col-sm-3 col-form-label">Descripcion de la Noticia:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="descripcion" placeholder="Descripcion de la Noticia">
+					      		<input type="text" class="form-control" id="descripcion" placeholder="Descripcion de la Noticia" name="TxtDescripcion">
 								</div>
 								
 						
@@ -143,7 +181,7 @@
 					  	<div class="form-group row">
 					  		<div class="col-sm-3">Seleccionar Imagen:</div>
 					    	<div class="col-sm-8">
-					      		<input type="file" id="archivo">
+					      		<input type="file" id="archivo" name="TxtImagen">
 								</div>
 								
 								<div class="card-body">
@@ -151,7 +189,7 @@
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">URL:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="titulo" placeholder="Insertar Url">
+					      		<input type="text" class="form-control" id="titulo" placeholder="Insertar Url" name="TxtURL">
 								</div>
 
 
@@ -160,11 +198,11 @@
 					  	<div class="form-group row">
 					    	<label for="posicion" class="col-sm-3 col-form-label">Posicion:</label>
 					    	<div class="col-sm-2">
-					      		<select name="posicion" id="posicion" class="form-control">
-					      			<option value="LIS">1</option>
-					      			<option value="LDS">2</option>
-					      			<option value="LID">3</option>
-					      			<option value="LDI">4</option>
+					      		<select name="TxtPosicion" id="posicion" class="form-control">
+					      			<option value="1">1</option>
+					      			<option value="2">2</option>
+					      			<option value="3">3</option>
+					      			<option value="4">4</option>
 					      		</select>
 					    	</div>
 					  	</div>
@@ -184,9 +222,7 @@
 					      		</button>
 					    	</div>
 					    	<div class="col-sm-3">
-					      		<button class="btn btn-success text-center">
-					      			<img src="img/icono_actualizar.png">&nbsp Actualizar
-					      		</button>
+					      		<input type="submit" class="btn btn-success text-center" name="BtnGuardar" value="Guardar">
 					    	</div>
 					  	</div>
 						
