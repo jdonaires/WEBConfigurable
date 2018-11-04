@@ -1,3 +1,45 @@
+
+
+<?php
+require_once('PHP/BOL/InfoNosotros.php');
+require_once('PHP/DAO/InfoNosotrosDAO.php');
+
+$per = new InfoNosotros();
+$perDAO = new InfoNosotrosDAO();
+
+if(isset($_POST['BtnGuardar']))
+{
+	echo $_POST['TxtTema'];
+	echo "HolaInsertando";
+	$per->__SET('IdInfoNostros', "0");
+	$per->__SET('Tema', $_POST['TxtTema']);
+	$per->__SET('Descripcion',        $_POST['TxtContenido']);
+	$per->__SET('Image1', $_POST['TxtImage1']);
+	$per->__SET('Image2', $_POST['TxtImage2']);
+	$per->__SET('IdUsuario', "1");
+	$per->__SET('Opcion', "I");
+	echo "HolaInsertando";
+	
+
+	$perDAO->Registrar($per);
+	echo "HolaInsertando2";
+	
+header('Location: Agregar_Usuario.php');
+}
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,35 +161,44 @@
 				    	Actualizar Contenido
 				  </div>
 				  <div class="card-body">
-				    <form>
+                  
+                  
+                  
+                  
+                  <!-- form -->
+                  
+                  
+                  
+                  
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">Titulo de la Empresa:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="titulo" placeholder="Titulo de la Empresa">
+					      		<input type="text" class="form-control" id="titulo"  name="TxtTema" placeholder="Titulo de la Empresa">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					    	<label for="contenido" class="col-sm-3 col-form-label">Contenido de Nosotros:</label>
 					    	<div class="col-sm-8">
-					      		<textarea name="contenido" id="contenido" class="form-control" rows="5"></textarea>
+					      		<textarea name="TxtContenido" id="contenido"  class="form-control" rows="5"></textarea>
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					  		<div class="col-sm-3">Seleccionar Imagen N°01-Izquierdo</div>
 					    	<div class="col-sm-8">
-					      		<input type="file" id="archivo">
+					      		<input type="file" id="archivo" name="TxtImage1" >
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					  		<div class="col-sm-3">Seleccionar Imagen N°02-Derecho</div>
 					    	<div class="col-sm-8">
-					      		<input type="file" id="archivo">
+					      		<input type="file" id="archivo" name="TxtImage2" >
 					    	</div>
 					  	</div>
 					 <div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					    	<div class="col-sm-9">
-					      		<button class="btn btn-danger text-center" style="background: green ; border:green"><img src="icono_config/icono_actualizar.png" >Actualizar</button>
+					      		<input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
 					    	</div>
 					    	</div>
 					  	</div>
