@@ -1,4 +1,36 @@
-﻿<!DOCTYPE html>
+﻿
+<?php
+require_once('PHP/BOL/Nosotros.php');
+require_once('PHP/DAO/NosotrosDAO.php');
+
+$per = new Nosotros();
+$perDAO = new NosotrosDAO();
+
+if(isset($_POST['BtnGuardar']))
+{
+	
+	$per->__SET('IdNostros', "0");
+	
+	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
+	$per->__SET('IdUsuario', "1");
+	$per->__SET('Opcion', "I");
+
+	
+
+	$perDAO->Registrar($per);
+	echo "HolaInsertando2";
+	
+header('Location: Agregar_Usuario.php');
+}
+
+
+
+?>
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -121,13 +153,13 @@
                         Actualizar Pie de Portada
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                             <div class="form-group row">
                                 <label for="titulo" class="col-sm-3 col-form-label">Nosotros (Contenido) <br><br>50 carácteres max.</label>
                                 
                                 <div class="col-sm-8">
                                     
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="TxtDescripcion"></textarea>
                                 </div>
                             </div>
                            
@@ -136,9 +168,7 @@
                                 <div class="col-sm-5 "></div>
                                 
                                 <div class="col-sm-3">
-                                    <button class="btn btn-success btn btn-lg text-center">
-					<img src="icono_config/icono_actualizar.png" > &nbsp Actualizar
-					      		</button>
+                                    <input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
                                 </div>
                             </div>
 
