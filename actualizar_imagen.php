@@ -131,7 +131,19 @@
 				    Actualizar Imagen
 				  </div>
 				  <div class="card-body">
-				    <form>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 					  	<div class="form-group row">
 					    	<label for="descripcion" class="col-sm-3 col-form-label">Descripcion:</label>
 					    	<div class="col-sm-8">
@@ -144,12 +156,12 @@
 					      		<input type="text" class="form-control" id="enlace" placeholder="Añadir Enlace:">
 					    	</div>
 					  	</div>
-					  	<div class="form-group row">
+					  	<!--<div class="form-group row">
 					    	<label for="posicion" class="col-sm-3 col-form-label">Posicion:</label>
 					    	<div class="col-sm-4">
 					      		<input type="text" class="form-control" id="posicion" placeholder="Posicion">
 					    	</div>
-					  	</div>
+					  	</div> -->
 					  	<div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					    	<div class="col-sm-8">
@@ -159,9 +171,7 @@
 					  	<div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					    	<div class="col-sm-8">
-					      		<button class="btn btn-danger text-center">
-					      			<img src="img/icono_actualizar.png">&nbsp Actualizar
-					      		</button>
+					      		<input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
 					    	</div>
 					  	</div>
 						
