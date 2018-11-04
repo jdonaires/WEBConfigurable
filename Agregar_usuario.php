@@ -1,3 +1,31 @@
+<?php
+require_once('PHP/BOL/Usuario.php');
+require_once('PHP/DAO/UsuarioDao.php');
+
+$per = new Usuario();
+$perDAO = new UsuarioDAO();
+
+if(isset($_POST['BtnGuardar']))
+{
+	echo "HolaInsertando";
+	$per->__SET('_IdUsuario', "0");
+	$per->__SET('_Nombres',          $_POST['TxtNombres']);
+	$per->__SET('_Apellidos',        $_POST['TxtApellidos']);
+	$per->__SET('_Correo', $_POST['TxtCorreo']);
+	$per->__SET('_Contraseña', $_POST['TxtContraseña']);
+	$per->__SET('_Estado', "A");
+	$per->__SET('_Opcion', "I");
+	echo "HolaInsertando";
+	
+
+	$perDAO->Registrar($per);
+header('Location: Agregar_Usuario.php');
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +88,7 @@
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Acceso
@@ -126,7 +154,7 @@
 				  <div class="card-body">
 
 				  	<div class="form-group row">
-				  		
+
 				  		<div class="col-sm-2"></div>
 				  		<div class="col-sm-4">
 				  	<input type="radio" name="usuario" value="Usuario administrador"> Usuario Administrador
@@ -137,45 +165,51 @@
 				    </div>
 					</div>
 
-				    <form>
+
+
+<!-- form -->
+
+
+
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 					  	<div class="form-group row">
 					    	<label for="descripcion" class="col-sm-3 col-form-label">Nombres:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="descripcion" placeholder="Ingrese sus Nombres">
+					      		<input type="text" name="TxtNombres" class="form-control" id="descripcion" placeholder="Ingrese sus Nombres">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					    	<label for="enlace" class="col-sm-3 col-form-label">Apellidos:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="enlace" placeholder="Ingrese sus Apellidos">
+					      		<input type="text" name="TxtApellidos" class="form-control" id="enlace" placeholder="Ingrese sus Apellidos">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					    	<label for="posicion" class="col-sm-3 col-form-label">E-mail:</label>
 					    	<div class="col-sm-4">
-					      		<input type="text" class="form-control" id="posicion" placeholder="Ingrese su E-mail">
+					      		<input type="text" name="TxtCorreo" class="form-control" id="posicion" placeholder="Ingrese su E-mail">
 					    	</div>
 					    </div>
 					    <div class="form-group row">
 					    	<label for="posicion" class="col-sm-3 col-form-label">Contraseña:</label>
 					    	<div class="col-sm-4">
-					      		<input type="password" class="form-control" id="posicion" placeholder="Ingrese su Contraseña">
+					      		<input type="password" name="TxtContraseña" class="form-control" id="posicion" placeholder="Ingrese su Contraseña">
 					    	</div>
 					  	</div>
-					  	
+
 
 					  	<div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					    	<div class="col-sm-3">
-					    		<button class="btn btn-green text-center" style="background: green; border: green; color:white"><img src="icono_config/icono_actualizar.png">&nbsp Limpiar</button>
+
 					  	</div>
 
 					  	<div class="form-group row">
 					  		<div class="col-sm-3"></div>
-					      		<button class="btn btn-green text-center" style="background: green; border: green; color:white"><img src="icono_config/icono_guardar.png">&nbsp Guardar</button>
+					      		<input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
 					    	</div>
 					  	</div>
-						
+
 					</form>
 				  </div>
 				</div>
