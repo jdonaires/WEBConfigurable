@@ -1,4 +1,49 @@
-﻿<!DOCTYPE html>
+﻿
+<?php
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NoticiasDAO.php');
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Nosotros.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NosotrosDAO.php');
+
+
+
+$Nosotros = new Nosotros();
+$NosotrosDAO = new NosotrosDAO();
+
+
+$Noticias = new Noticias();
+$NoticiasDAO = new NoticiasDAO();
+
+	$ResulNoticias = array();//VARIABLE TIPO RESULTADO
+	
+$Noticias->__SET('Opcion',          'T');
+	$ResulNoticias = $NoticiasDAO->Listar($Noticias); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+	
+	
+	
+	/*Nosotros*/
+$ResulNosotros = array();//VARIABLE TIPO RESULTADO
+	
+$Nosotros->__SET('Opcion',          'T');
+	$ResulNosotros = $NosotrosDAO->Listar($Nosotros);
+	
+	
+						foreach( $ResulNosotros as $ReNo){
+							
+							$DescripcionRuta=$ReNo->__GET('Descripcion');
+						
+						
+
+						}
+
+					
+?>
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Pagina Administrable</title>
@@ -71,8 +116,8 @@
 			<label class="icon-menu" for="menu-bar"> </label>
 			<nav class="menu">
 
-				<a href="index.html">Inicio</a>
-				<a href="Html/Nosotros.html">Nosotros</a>
+				<a href="index.php">Inicio</a>
+				<a href="Html/Nosotros.php">Nosotros</a>
 			</nav>
 		</div>
 	</header>
@@ -115,20 +160,26 @@
             <h1 >Noticias</h1>
             <div class="fila2">
             
-        <div class="noticias_columna">
-            <img src="imagenes/oceano.jpg" alt="" class="noticias_img">
-            <div class="noticias_descripcion">
-              <h2 class="noticias_titulo">Programación</h2>
-              <div class="noticias_txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, dignissimos.</div>
-            </div>
-                </div>
-          <div class="noticias_columna">
-            <img src="imagenes/oceano.jpg" alt="" class="noticias_img">
-            <div class="noticias_descripcion">
-              <h2 class="noticias_titulo">Diseño Web</h2>
-              <div class="noticias_txt">Accusantium rem quia doloribus soluta ullam pariatur alias, quas dolorum.</div>
-            </div>
-          </div>
+            
+            <?php 
+			foreach( $ResulNoticias as $ResulNot){
+			echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
+            echo "<img src='imagenes/".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
+           echo  "<div class='noticias_descripcion'>";
+              echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
+              echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
+            echo "</div>                </div></a>";
+			
+			}
+			
+			 ?>
+            
+            
+            
+            
+            
+        
+          
                 </div>
         </div>
         </div>
@@ -142,13 +193,7 @@
             <h1>Nosotros</h1>
             
             <p>
-                mmmmmmmmkjhjkjh kjjjjdddddddjhj
-                hjhjhjhjjkjdlkj
-                flkfdlkjfklfjf
-                jcnnvnvnvnvn
-                vnvnvnvnvnv
-                vnvnvnv
-                nvnvnvnvnv
+                <?php echo $DescripcionRuta; ?>
             </p>
             
         </div>
