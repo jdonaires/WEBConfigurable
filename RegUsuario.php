@@ -19,7 +19,7 @@ if(isset($_POST['BtnGuardar']))
 	
 
 	$perDAO->Registrar($per);
-header('Location: Agregar_Usuario.php');
+header('Location: RegUsuario.php');
 }
 
 
@@ -80,6 +80,7 @@ header('Location: Agregar_Usuario.php');
 			<div class="col-4">
 				<p>Usuario Administrador</p>
 				<p>Magallanes Magallanes, Fáride</p>
+			</div>
 			<div class="col-1 offset-7">
 	 	<button class="btn btn-link" style= "position: absolute;bottom: 10px">
 		<img src="icono_config/icono_salir.png"></button>
