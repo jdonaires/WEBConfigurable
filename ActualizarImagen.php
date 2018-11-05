@@ -1,3 +1,38 @@
+
+<?php
+require_once('PHP/BOL/ImagenNosotros.php');
+require_once('PHP/DAO/ImagenNosotrosDAO.php');
+
+$per = new ImagenNosotros();
+$perDAO = new ImagenNosotrosDAO();
+
+if(isset($_POST['BtnGuardar']))
+{
+	
+	$per->__SET('IdImagenNostros', "0");
+	
+	$per->__SET('Image', $_POST['TxtImage']);
+	$per->__SET('IdUsuario', "1");
+	$per->__SET('Opcion', "I");
+
+	
+
+	$perDAO->Registrar($per);
+	echo "HolaInsertando2";
+	
+header('Location: Agregar_Usuario.php');
+}
+
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,17 +155,25 @@
 				    	Actualizar Imagen
 				  </div>
 				  <div class="card-body">
-				    <form>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 				    	<div class="form-group row">
 					  		<div class="col-sm-3">Seleccionar Archivo</div>
 					    	<div class="col-sm-8">
-					      		<input type="file" id="archivo">
+					      		<input type="file" id="archivo" name="TxtImage">
 					    	</div>
 					  	</div>
 					  	 <div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					    	<div class="col-sm-8">
-					      		<button class="btn btn-danger text-center" style="background: green ; border:green"><img src="icono_config/icono_actualizar.png" >Actualizar</button>
+					      		<input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
 					    	</div>
 					    	</div>
 					  	</div>

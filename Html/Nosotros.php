@@ -1,4 +1,60 @@
-﻿
+<?php
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\InfoNosotros.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\InfoNosotrosDAO.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\ImagenNosotros.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\ImagenNosotrosDAO.php');
+
+$Usu = new InfoNosotros();
+$UsuDAO = new InfoNosotrosDAO();
+
+$ImagenNosotros = new ImagenNosotros();
+$ImagenNosotrosDAO = new ImagenNosotrosDAO();
+
+	$resultado = array();//VARIABLE TIPO RESULTADO
+	
+$Usu->__SET('Opcion',          'T');
+	$resultado = $UsuDAO->Listar($Usu); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+	
+
+
+						foreach( $resultado as $r){
+							
+							//RECORREMOS EL ARRAY RESULTADO A TRAVES DE SUS CAMPOS
+						
+						
+
+						}
+
+
+
+
+
+$resultado2 = array();//VARIABLE TIPO RESULTADO
+	
+$ImagenNosotros->__SET('Opcion',          'T');
+	$resultado2 = $ImagenNosotrosDAO->Listar($ImagenNosotros); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+	
+
+
+						foreach( $resultado2 as $r2){
+							
+							//RECORREMOS EL ARRAY RESULTADO A TRAVES DE SUS CAMPOS
+						
+						$ruta=$r2->__GET('Image');
+
+
+
+}
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,22 +118,22 @@
 			<label class="icon-menu" for="menu-bar"> </label>
 			<nav class="menu">
 
-				<a href="../index.html">Inicio</a>
-				<a href="Html/Nosotros.html">Nosotros</a>
+				<a href="../index.php">Inicio</a>
+				<a href="../Html/Nosotros.php">Nosotros</a>
 			</nav>
 		</div>
 	</header>
 <main>
 		
 		<section id="fondo">
-			<img src="../imagenes/verde.jpg" alt="fondo5">
+			<img src="../imagenes/<?php echo $ruta; ?>">
             
 		</section>	
 
 		<section id="Nosotros">
 			<div class="contenedor">
-			<h3>NOMBRE DE LA EMPRESA</h3>
-			<p> Cansado de olvidar citas o eventos importantes, cansado de llegar tarde a reuniones vitales para ti, te presentamos awe la agenda web que te permitirá manejar y controlar mejor tus horarios, ven y disfruta de la experiencia de formar parte de los miles de usuarios que ya usan Awe.</p>
+			<h3><?php echo $r->__GET('Tema'); ?></h3>
+			<p><?php echo $r->__GET('Descripcion'); ?></p>
 			</div>
 		</section>
 		<section id="imagenes">
@@ -85,8 +141,8 @@
 			<div class="contenedor2">
 				<div class="colum_imagenes1"> 
             <div class="fila1">
-            <img src="../imagenes/verde.jpg">
-			<img src="../imagenes/verde.jpg">
+            <img src="../imagenes/<?php echo $r->__GET('Image1') ?>">
+			<img src="../imagenes/<?php echo $r->__GET('Image2') ?>">
         	</div>
            
 				</div>
