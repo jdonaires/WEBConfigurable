@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 require_once('PHP/BOL/InfoNosotros.php');
 require_once('PHP/DAO/InfoNosotrosDAO.php');
@@ -91,8 +91,8 @@ $Usu->__SET('Opcion',          'T');
 			<label class="icon-menu" for="menu-bar"> </label>
 			<nav class="menu">
 
-				<a href="../index.html">Inicio</a>
-				<a href="Html/Nosotros.html">Nosotros</a>
+				<a href="../index.php">Inicio</a>
+				<a href="../Nosotros.php">Nosotros</a>
 			</nav>
 		</div>
 	</header>
