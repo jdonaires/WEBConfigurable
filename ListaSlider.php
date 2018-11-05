@@ -46,15 +46,15 @@
 			<div class="col-3 col-xs-12">
 				<img  src="icono_config/logo.png" alt="Logo Empresa" class="img-fluid logo">
 			</div>
-			<div class="col-1 offset-4">
+			<div class="col-1 offset-5">
 				<img  src="icono_config/user.jpg" alt="Foto" class="rounded-circle foto" width="65" height="65">
 			</div>
-			<div class="col-4">
+			<div class="col-2">
 				<p>Usuario Administrador</p>
 				<p>Magallanes Magallanes, Fáride</p>
-				<div class="col-1 offset-7">
-	 	<button class="btn btn-link" style= "position: absolute;bottom: 10px">
-		<img src="icono_config/icono_salir.png"></button>
+			</div>
+				<div class="col-1 text-center align-self-center">
+				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
 			</div>
 		</header>
 
@@ -67,9 +67,9 @@
 				    Acceso
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="Cabecera.html">Menu 1</a>
-				    <a class="dropdown-item" href="#">Menu 2</a>
-				    <a class="dropdown-item" href="#">Menu 3</a>
+				    <a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
+				    <a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
+				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
 				  </div>
 				</div>
 
@@ -111,51 +111,47 @@
 
 		<section class="row contenido">
 			<div class="col-md-2">
-				<button class="btn btn-secondary form-control mb-5 botones"><img src="icono_config/icono_lista.png">
+				<button class="btn btn-secondary form-control mb-5 botones" href="ListaSlider.php"><img src="icono_config/icono_lista.png">
 					&nbsp Lista de Imágenes
 				</button>
 
-				<button class="btn btn-secondary form-control botones">
+				<button class="btn btn-secondary form-control botones" href="RegSlider.php">
 				<img src="icono_config/icono_anadir.png">
 					&nbsp Agregar Imagen
 				</button>
 			</div>
 
 			<div class="col-md-8 offset-md-1">
-				<h4 class="text-muted mb-3">Imagenes</h4>
+				<h4 class="text-muted mb-3">Imagenes Slider</h4>
 				<table class="table table-responsive">
 				    	<thead>
 				    		<th>Imagen</th>
 				    		<th>Descripción</th>
-				    		<th>Posición</th>
-				    		<th>Opciones</th>
+				    		<th>Opcion</th>
 				    	</thead>
 				    	<tbody>
 				    		<tr>
 				    			<td><img src="https://images-blogger-opensocial.googleusercontent.com/gadgets/proxy?url=http%3A%2F%2Fdefinicionde.hugex.net%2Fwp-content%2Fuploads%2F2015%2F07%2Fe1001e86903d5fccba2a7e83a0547bd4.jpg&container=blogger&gadget=a&rewriteMime=image%2F*" width="150" height="150"></td>
 				    			<td class=""> Descripción de la imagen</td>
-				    			<td>1</td>
+				    			
 				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button><br>
-				    				<button class="btn btn-link"><img src="icono_config/icono_modificar.png"></button>
+				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button>
 				    			</td>
 				    		</tr>
 				    		<tr>
 				    			<td><img src="https://mott.pe/noticias/wp-content/uploads/2016/11/Janette-Asche.jpg" width="150" height="150"></td>
 				    			<td>Descripción de la imagen</td>
-				    			<td>2</td>
+				    			
 				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button> <br>
-				    				<button class="btn btn-link"><img src="icono_config/icono_modificar.png"></button>
+				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button> 
 				    			</td>
 				    		</tr>
 				    		<tr>
 				    			<td><img src="https://www.paisajesimagenes.com/wp-content/uploads/paisajes-de-paris1.jpg" width="150" height="150"></td>
 				    			<td>Descripción de la imagen</td>
-				    			<td>3</td>
+				    			
 				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button><br>
-				    				<button class="btn btn-link"><img src="icono_config/icono_modificar.png"></button>
+				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button>
 				    			</td>
 				    		</tr>
 				    	</tbody>

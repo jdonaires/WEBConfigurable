@@ -105,9 +105,9 @@ if(isset($_POST['BtnGuardar']))
 				    Acceso
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="Cabecera.html">Menu 1</a>
-				    <a class="dropdown-item" href="#">Menu 2</a>
-				    <a class="dropdown-item" href="#">Menu 3</a>
+				    <a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
+				    <a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
+				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
 				  </div>
 				</div>
 				

@@ -1,4 +1,4 @@
-﻿
+
 <?php
 require_once('PHP/BOL/Nosotros.php');
 require_once('PHP/DAO/NosotrosDAO.php');
@@ -87,6 +87,7 @@ header('Location: Agregar_Usuario.php');
             <div class="col-4">
                 <p>Usuario Administrador</p>
                 <p>Romero Ormeño, Camila</p>
+			</div>
 	    <div class="col-1 offset-7">
 	 	<button class="btn btn-link" style= "position: absolute;bottom: 10px">
 		<img src="icono_config/icono_salir.png"></button>
@@ -102,10 +103,10 @@ header('Location: Agregar_Usuario.php');
                     Acceso
                   </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="Cabecera.html">Menu 1</a>
-                            <a class="dropdown-item" href="#">Menu 2</a>
-                            <a class="dropdown-item" href="#">Menu 3</a>
-                        </div>
+				    <a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
+				    <a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
+				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
+				  </div>
                     </div>
   			
 		    <!-- <a href="login.html" class="btn items">Acceso</a> -->

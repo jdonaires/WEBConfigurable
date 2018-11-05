@@ -31,7 +31,7 @@
 		}
 
 		.items{
-			color: #f94040;
+			color: gray;
 			font-family: 'Georgia';
 		}
 
@@ -54,7 +54,7 @@
 				<p>Martinez Perez, Juan</p>
 			</div>
 			<div class="col-1 text-center align-self-center">
-				<button class="btn btn-outline-secondary"><img src="img/icono_salir.png"></button>
+				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
 			</div>
 		</header>
 
@@ -67,9 +67,9 @@
 				    Acceso
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="Cabecera.html">Menu 1</a>
-				    <a class="dropdown-item" href="#">Menu 2</a>
-				    <a class="dropdown-item" href="#">Menu 3</a>
+				    <a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
+				    <a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
+				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
 				  </div>
 				</div>
 
@@ -122,7 +122,7 @@
 			</div>
 
 			<div class="col-md-8 offset-md-1">
-				<h4 class="text-muted mb-3">Imagenes</h4>
+				<h4 class="text-muted mb-3">Imagenes Conoce Mas</h4>
 				<table class="table table-responsive">
 				    	<thead>
 				    		<th>Imagen</th>
