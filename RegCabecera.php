@@ -31,7 +31,7 @@
 		}
 
 		.items{
-			color: #f94040;
+			color: gray;
 			font-family: 'Georgia';
 		}
 
@@ -54,7 +54,7 @@
 				<p>Martinez Perez, Juan</p>
 			</div>
 			<div class="col-1 text-center align-self-center">
-				<button class="btn btn-outline-secondary"><img src="img/icono_salir.png"></button>
+				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
 			</div>
 		</header>
 
@@ -113,7 +113,7 @@
 			<div class="col-md-8">
 				<div class="card">
 				  <div class="card-header">
-				    	Cabecera
+				    	Registro Cabecera
 				  </div>
 				  <div class="card-body">
 				    <form>
@@ -121,12 +121,6 @@
 					    	<label for="nombre" class="col-sm-4 col-form-label">Nombre de la Organizacion:</label>
 					    	<div class="col-sm-8">
 					      		<input type="text" class="form-control" id="nombre" placeholder="Nombre de la Organizacion">
-					    	</div>
-					  	</div>
-					  	<div class="form-group row">
-					    	<label for="slogan" class="col-sm-4 col-form-label">Slogan:</label>
-					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="slogan" placeholder="Slogan">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
@@ -151,7 +145,7 @@
 					  	<div class="form-group row">
 					  		<div class="col-sm-4"></div>
 					  		<div class="col-sm-3">
-					      		<button class="btn btn-danger text-center">
+					      		<button class="btn btn-danger text-center" style="background: green; border: green; color:white" >
 					      			<img src="img/icono_actualizar.png">&nbsp Actualizar
 					      		</button>
 					    	</div>
