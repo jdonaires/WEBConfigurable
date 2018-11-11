@@ -70,6 +70,7 @@ header('Location: RegUsuario.php');
 </head>
 <body>
 <div class="container-fluid">
+		<div class="container-fluid">
 		<header class="row">
 			<div class="col-3 col-xs-12">
 				<img  src="icono_config/logo.png" alt="Logo Empresa" class="img-fluid logo">
@@ -81,7 +82,7 @@ header('Location: RegUsuario.php');
 				<p>Usuario Administrador</p>
 				<p>Magallanes Magallanes, Fáride</p>
 			</div>
-			<div class="col-1 offset-7">
+			<div class="col-1 text-center align-self-center">
 	 	<button class="btn btn-link" style= "position: absolute;bottom: 10px">
 		<img src="icono_config/icono_salir.png"></button>
 			</div>
@@ -106,17 +107,41 @@ header('Location: RegUsuario.php');
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
-					<a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
-				    <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
-				    <a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista de Redes Sociales</a>
-				    <a class="dropdown-item" href="ListaSlider.php">Lista Slider</a>
-					<a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
-					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros</a>
+				    <a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista de Redes Sociales</a> 
+					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
 					<a class="dropdown-item" href="RegRedesSociales.php">Registro Redes Sociales</a>
 					
 				  </div>
 				</div>
-
+					
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Noticias
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				   <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
+				  </div>
+				</div>
+				  
+					<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Conoce mas
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
+				  </div>
+				</div>
+					
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Slider
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				   <a class="dropdown-item" href="ListaSlider.php">Lista Slider</a>
+				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
+				  </div>
+				</div>
+					
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros

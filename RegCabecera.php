@@ -78,30 +78,49 @@
 				    Portada Principal
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="#">Cabecera de Portada</a>
-				    <a class="dropdown-item" href="#">Redes Sociales</a>
-				    <a class="dropdown-item" href="#">Slider</a>
-				    <a class="dropdown-item" href="#">Pie de Portada</a>
+				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
+				    <a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista de Redes Sociales</a> 
+					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
+					<a class="dropdown-item" href="RegRedesSociales.php">Registro Redes Sociales</a>
+					
 				  </div>
 				</div>
-
+					
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Secciones Inicio
+				    Registro Noticias
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="#">Conoce mas...</a>
-				    <a class="dropdown-item" href="#">Noticias</a>
+				   <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
 				  </div>
 				</div>
-
+				  
+					<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Conoce mas
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
+				  </div>
+				</div>
+					
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Slider
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				   <a class="dropdown-item" href="ListaSlider.php">Lista Slider</a>
+				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
+				  </div>
+				</div>
+					
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="#">Imagen de Portada</a>
-				    <a class="dropdown-item" href="#">Contenido</a>
+				    <a class="dropdown-item" href="RegNosotrosImagenFondo.php">Imagen de Portada</a>
+				    <a class="dropdown-item" href="RegNoticia.php">Contenido</a>
 				  </div>
 				</div>
 
