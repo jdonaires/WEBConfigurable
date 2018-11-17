@@ -18,12 +18,12 @@ class NosotrosDAO
 		try
 		{
 		$statement = $this->pdo->prepare("CALL PA_Set_Nosotros(?,?,?,?)");
-    $statement->bindParam(1,$Campo->__GET('IdNosotros'));
+    $statement->bindValue(1,$Campo->__GET('IdNosotros'));
 
-		$statement->bindParam(2,$Campo->__GET('Descripcion'));
+		$statement->bindValue(2,$Campo->__GET('Descripcion'));
 
-		$statement->bindParam(3,$Campo->__GET('IdUsuario'));
-		$statement->bindParam(4,$Campo->__GET('Opcion'));
+		$statement->bindValue(3,$Campo->__GET('IdUsuario'));
+		$statement->bindValue(4,$Campo->__GET('Opcion'));
 
     $statement -> execute();
 
@@ -42,7 +42,7 @@ class NosotrosDAO
 
 			$statement = $this->pdo->prepare("call Pa_Get_Nosotros(?)");
 
-			$statement->bindParam(1,$Campo->__GET('Opcion'));
+			$statement->bindValue(1,$Campo->__GET('Opcion'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)

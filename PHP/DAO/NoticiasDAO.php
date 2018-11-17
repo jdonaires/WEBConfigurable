@@ -18,14 +18,14 @@ class NoticiasDAO
 		try
 		{
 		$statement = $this->pdo->prepare("CALL PA_Set_Noticias(?,?,?,?,?,?,?,?)");
-    $statement->bindParam(1,$Campo->__GET('IdNoticias'));
-		$statement->bindParam(2,$Campo->__GET('TituloNoticia'));
-		$statement->bindParam(3,$Campo->__GET('Descripcion'));
-		$statement->bindParam(4,$Campo->__GET('Imagen'));
-		$statement->bindParam(5,$Campo->__GET('URL'));
-		$statement->bindParam(6,$Campo->__GET('Posicion'));
-		$statement->bindParam(7,$Campo->__GET('IdUsuario'));
-		$statement->bindParam(8,$Campo->__GET('Opcion'));
+    $statement->bindValue(1,$Campo->__GET('IdNoticias'));
+		$statement->bindValue(2,$Campo->__GET('TituloNoticia'));
+		$statement->bindValue(3,$Campo->__GET('Descripcion'));
+		$statement->bindValue(4,$Campo->__GET('Imagen'));
+		$statement->bindValue(5,$Campo->__GET('URL'));
+		$statement->bindValue(6,$Campo->__GET('Posicion'));
+		$statement->bindValue(7,$Campo->__GET('IdUsuario'));
+		$statement->bindValue(8,$Campo->__GET('Opcion'));
 	echo "hola";
     $statement -> execute();
 	echo "hola";
@@ -44,7 +44,7 @@ class NoticiasDAO
 
 			$statement = $this->pdo->prepare("call Pa_Get_Noticias(?)");
 
-			$statement->bindParam(1,$Campo->__GET('Opcion'));
+			$statement->bindValue(1,$Campo->__GET('Opcion'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
