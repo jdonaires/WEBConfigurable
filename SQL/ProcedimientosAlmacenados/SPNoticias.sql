@@ -29,6 +29,8 @@ Delete from Noticias where IdNoticias =_IdNoticias ;
    END
    $$
 
+DROP PROCEDURE IF EXISTS PA_Get_Noticias;
+
 DELIMITER $$
  CREATE PROCEDURE PA_Get_Noticias(
 

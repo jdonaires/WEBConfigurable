@@ -18,15 +18,14 @@ $NoticiasDAO = new NoticiasDAO();
 
 	$ResulNoticias = array();//VARIABLE TIPO RESULTADO
 	
-$Noticias->__SET('Opcion',          'T');
+    $Noticias->__SET('Opcion', 'T');
 	$ResulNoticias = $NoticiasDAO->Listar($Noticias); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
 	
 	
 	
 	/*Nosotros*/
-$ResulNosotros = array();//VARIABLE TIPO RESULTADO
-	
-$Nosotros->__SET('Opcion',          'T');
+    $ResulNosotros = array();//VARIABLE TIPO RESULTADO
+    $Nosotros->__SET('Opcion', 'T');
 	$ResulNosotros = $NosotrosDAO->Listar($Nosotros);
 	
 	

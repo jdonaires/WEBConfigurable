@@ -18,7 +18,7 @@ class NoticiasDAO
 		try
 		{
 		$statement = $this->pdo->prepare("CALL PA_Set_Noticias(?,?,?,?,?,?,?,?)");
-    $statement->bindValue(1,$Campo->__GET('IdNoticias'));
+    	$statement->bindValue(1,$Campo->__GET('IdNoticias'));
 		$statement->bindValue(2,$Campo->__GET('TituloNoticia'));
 		$statement->bindValue(3,$Campo->__GET('Descripcion'));
 		$statement->bindValue(4,$Campo->__GET('Imagen'));
@@ -44,13 +44,13 @@ class NoticiasDAO
 
 			$statement = $this->pdo->prepare("call Pa_Get_Noticias(?)");
 
-			$statement->bindValue(1,$Campo->__GET('Opcion'));
+			$statement->bindValue(1,'T', PDO::PARAM_STR);
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
 				$per = new Noticias();
-	$per->__SET('IdNoticias', $r->IdNoticias);
+			    $per->__SET('IdNoticias', $r->IdNoticias);
 				$per->__SET('TituloNoticia', $r->TituloNoticia);
 				$per->__SET('Descripcion', $r->Descripcion);
 				$per->__SET('Imagen', $r->Imagen);
