@@ -57,7 +57,6 @@
 				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
 			</div>
 		</header>
-		</header>
 
 		<section class="row menu">
 			<div class="col-12">

@@ -66,6 +66,14 @@ header('Location: RegUsuario.php');
 		.contenido {
 			margin-top: 30px;
 		}
+		
+		.container-fluid {
+			width: 100%;
+			padding-right: 0px;
+			padding-left: 0px; 
+			margin-right: auto;
+			margin-left: auto;
+		}
 	</style>
 </head>
 <body>

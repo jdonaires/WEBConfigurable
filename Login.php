@@ -34,12 +34,11 @@ if(isset($_POST['btnIngresar']))
 	$resultado = array();//VARIABLE TIPO RESULTADO
 	$Usu->__SET('_Correo',          $_POST['TxtCorreo']);
 	$Usu->__SET('_Contraseña',          $_POST['TxtContraseña']);
-$Usu->__SET('_Opcion',          'L');
+	$Usu->__SET('_Opcion',          'L');
 	$resultado = $UsuDAO->Listar($Usu); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
 	if(!empty($resultado)) //PREGUNTAMOS SI NO ESTA VACIO EL ARRAY
 	{
-
-header('Location: http://localhost/WEBConfigurable/Index.php');
+		header('Location: http://localhost/WEBConfigurable/VentanaPrincipalConfig.php');
 	}
 	else
 	{

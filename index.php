@@ -1,4 +1,4 @@
-﻿
+
 <?php
 
 require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
@@ -117,6 +117,7 @@ $NoticiasDAO = new NoticiasDAO();
 
 				<a href="index.php">Inicio</a>
 				<a href="Html/Nosotros.php">Nosotros</a>
+				<a href="Login.php">Acceso</a>
 			</nav>
 		</div>
 	</header>
