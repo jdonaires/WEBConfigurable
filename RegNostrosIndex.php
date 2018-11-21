@@ -110,13 +110,25 @@ header('Location: Agregar_Usuario.php');
                     </div>
   			
 		    <!-- <a href="login.html" class="btn items">Acceso</a> -->
-
-                   	<div class="dropdown opcion_menu">
+				
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Principal
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
+					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
+					
+				  </div>
+				</div>
+                
+				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				   <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
+				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
 				  
@@ -146,6 +158,15 @@ header('Location: Agregar_Usuario.php');
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegNosotrosImagenFondo.php">Imagen de Portada</a>
 				    <a class="dropdown-item" href="RegNoticia.php">Contenido</a>
+				  </div>
+				</div>
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Redes Sociales
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista Redes Sociales</a>
+				    <a class="dropdown-item" href="RegRedesSociales.php">Registro Redes Sociales</a>
 				  </div>
 				</div>
 

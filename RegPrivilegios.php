@@ -45,18 +45,17 @@
 <div class="container-fluid">
 		<header class="row">
 			<div class="col-3 col-xs-12">
-				<img  src="icono_config/logo.png" alt="Logo Empresa" class="img-fluid logo">
+				<img  src="img/logo.png" alt="Logo Empresa" class="img-fluid logo">
 			</div>
 			<div class="col-1 offset-5 text-right">
-				<img  src="icono_config/user.jpg" alt="Foto" class="rounded-circle foto" width="65" height="65">
+				<img  src="img/user.jpg" alt="Foto" class="rounded-circle foto" width="65" height="65">
 			</div>
 			<div class="col-2-auto text-right">
 				<p>Usuario Administrador</p>
-				<p>Magallanes Magallanes, Fáride</p>
+				<p>Magallanes Magallanes, Faride</p>
 			</div>
 			<div class="col-1 text-center align-self-center">
-	 	<button class="btn btn-link" style= "position: absolute;bottom: 10px">
-		<img src="icono_config/icono_salir.png"></button>
+				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
 			</div>
 		</header>
 		<section class="row menu">
@@ -73,12 +72,23 @@
 				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
 				  </div>
 				</div>
-			<div class="dropdown opcion_menu">
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Principal
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
+					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
+					
+				  </div>
+				</div>
+				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				   <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
+				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
 				  
@@ -110,6 +120,15 @@
 				    <a class="dropdown-item" href="RegNoticia.php">Contenido</a>
 				  </div>
 				</div>
+				<div class="dropdown opcion_menu">
+				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Registro Redes Sociales
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista Redes Sociales</a>
+				    <a class="dropdown-item" href="RegRedesSociales.php">Registro Redes Sociales</a>
+				  </div>
+				</div>
 
 				</div>
 			</div>
@@ -133,10 +152,9 @@
 	<img src="icono_config/icono_guardar.png">&nbsp Guardar</button>
 	<button class="btn btn-green text-center" style="background: green; border: green; color:white">
 	<img src="icono_config/icono_cerrar.png">&nbsp Cancelar</button>
-
-	</form>
+	
 </fieldset>
-
+</form>
 	<script src="js/jquery.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
