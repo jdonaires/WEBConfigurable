@@ -2,19 +2,19 @@
 require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Slider.php');
 require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\SliderDAO.php');
 
+
 $Slider = new Slider();
 $SliderDAO = new SliderDAO();
 
-/*SLIDER*/
+/*CONOCEMAS*/
 
-$ResulSlider = array();//VARIABLE TIPO RESULTADO
+$ResulSider = array();//VARIABLE TIPO RESULTADO
 
     $Slider->__SET('Opcion', 'T');
 	$ResulSlider = $SliderDAO->Listar($Slider);
 
-
 ?>
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +78,7 @@ $ResulSlider = array();//VARIABLE TIPO RESULTADO
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-
+				
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Acceso
@@ -97,10 +97,10 @@ $ResulSlider = array();//VARIABLE TIPO RESULTADO
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-
+					
 				  </div>
 				</div>
-
+					
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
@@ -110,7 +110,7 @@ $ResulSlider = array();//VARIABLE TIPO RESULTADO
 				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
-
+				  
 					<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Conoce mas
@@ -119,7 +119,7 @@ $ResulSlider = array();//VARIABLE TIPO RESULTADO
 				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
 				  </div>
 				</div>
-
+					
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Slider
@@ -129,7 +129,7 @@ $ResulSlider = array();//VARIABLE TIPO RESULTADO
 				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
 				  </div>
 				</div>
-
+					
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
@@ -174,24 +174,15 @@ $ResulSlider = array();//VARIABLE TIPO RESULTADO
 				    		<th>Opcion</th>
 				    	</thead>
 				    	<tbody>
-                <?php
-          foreach( $ResulSlider as $ReCM){
-          echo "<tr>";
-          echo "<td><img src='imagenes/".$ReCM->__GET('Imagen')."' width='150' height='150'></td>";
-
-          echo "	<td>".$ReCM->__GET('Descripcion')."</td>";
-          echo "	<td>".$ReCM->__GET('Enlace')."</td>";
-        echo	"<td><a href='PHP/ELIMINAR/Eliminar_Slider.php?a=".$ReCM->__GET('IdSlider')."'><img src='img/icono_cerrar.png'></a>	</td>";
-
-
-
-
-echo "		</tr>";
-
-
-
-          }
-          ?>
+							<?php
+									foreach( $ResulSlider as $ReCM){
+										echo "<tr>";
+										echo "		<td><img src='".$ReCM->__GET('Imagen')."' width='150' height='150'></td>";
+										echo "		<td>".$ReCM->__GET('Descripcion')."</td>";
+										echo	"		<td><a href='PHP/ELIMINAR/Eliminar_Noticias.php?a=".$ReCM->__GET('IdSlider')."'><img src='img/icono_cerrar.png'></a>	</td>";
+  									echo "</tr>";
+									}
+							?>
 				    	</tbody>
 				    </table>
 			</div>

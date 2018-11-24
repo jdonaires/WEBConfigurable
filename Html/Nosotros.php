@@ -134,7 +134,7 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
         <div class="container-columnas">
             <div class="colu1">
                 <div class="rowi1">
-                <img src="../imagenes/<?php echo $Logotipo; ?>" alt="">
+                <img src="../<?php echo $Logotipo; ?>" alt="">
                 <h1><?php echo $Nombre; ?></h1>
                 </div>
             </div>
@@ -151,7 +151,7 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 			 foreach( $ResulRedesSociales as $ReRS){
 
 				 echo "<a href='https:/".$ReRS->__GET('Enlace')."'>";
-				 echo "<img src='../imagenes/".$ReRS->__GET('Imagen')."'>";
+				 echo "<img src='../".$ReRS->__GET('Imagen')."'>";
 							 echo "</a>";
 
 			 }?>
@@ -173,7 +173,7 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 <main>
 
 		<section id="fondo">
-			<img src="../imagenes/<?php echo $ruta; ?>">
+			<img src="../<?php echo $ruta; ?>">
 
 		</section>
 

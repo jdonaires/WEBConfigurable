@@ -181,8 +181,8 @@ $ResulConoceMas = array();//VARIABLE TIPO RESULTADO
 									<?php
 						foreach( $ResulConoceMas as $ReCM){
 						echo "<tr>";
-						echo "<td><img src='imagenes/".$ReCM->__GET('URL')."' width='150' height='150'></td>";
-						echo "<td><img src='imagenes/".$ReCM->__GET('Image')."' width='150' height='150'></td>";
+						echo "<td><img src='".$ReCM->__GET('URL')."' width='150' height='150'></td>";
+						echo "<td><img src='".$ReCM->__GET('Image')."' width='150' height='150'></td>";
 						echo "	<td>".$ReCM->__GET('Descripcion')."</td>";
 					echo	"<td><a href='PHP/ELIMINAR/Eliminar_ConoceMas.php?a=".$ReCM->__GET('IdConoceMas')."'><img src='img/icono_cerrar.png'></a>	</td>";
 

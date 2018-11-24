@@ -60,8 +60,8 @@ if(isset($_POST['BtnGuardar']))
 
 	$per->__SET('IdConoceMas', "0");
 	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
-	$per->__SET('URL', "FILES_IMAGE/".$_FILES['TxtImagen1']['name']);
-	$per->__SET('Image', "FILES_IMAGE/".$_FILES['TxtImagen2']['name']);
+	$per->__SET('URL', "FILE_IMAGE/".$_FILES['TxtImagen1']['name']);
+	$per->__SET('Image', "FILE_IMAGE/".$_FILES['TxtImagen2']['name']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 	$perDAO->Registrar($per);
@@ -236,18 +236,6 @@ if(isset($_POST['BtnGuardar']))
 				    Actualizar Imagen
 				  </div>
 				  <div class="card-body">
-
-
-
-
-
-
-
-
-
-
-
-
 				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
 					  	<div class="form-group row">
 					    	<label for="descripcion" class="col-sm-3 col-form-label">Descripcion:</label>

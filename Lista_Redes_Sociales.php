@@ -166,7 +166,7 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
 								<?php
 					foreach( $ResulRedesSociales as $ReCM){
 					echo "<tr>";
-					echo "<td><img src='imagenes/".$ReCM->__GET('Imagen')."' width='150' height='150'></td>";
+					echo "<td><img src='".$ReCM->__GET('Imagen')."' width='150' height='150'></td>";
 
 					echo "	<td>".$ReCM->__GET('Descripcion')."</td>";
 					echo "	<td>".$ReCM->__GET('Enlace')."</td>";

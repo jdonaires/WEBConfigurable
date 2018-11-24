@@ -53,15 +53,14 @@ $perDAO = new CabeceraDAO();
 
 if(isset($_POST['BtnGuardar']))
 {
-
-
-
-
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtLogotipo']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtLogotipo']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
 	$per->__SET('IdContacto', "0");
 	$per->__SET('NombreOrganizacion', $_POST['TxtNombreOrganizacion']);
 	$per->__SET('Email',        $_POST['TxtEmail']);
 	$per->__SET('Telefono', $_POST['TxtTelefono']);
-	$per->__SET('Logotipo', $_POST['TxtImagen']);
+	$per->__SET('Logotipo', 'FILE_IMAGE/'.$_FILES['TxtLogotipo']['name']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 
@@ -226,7 +225,7 @@ if(isset($_POST['BtnGuardar']))
 				    	Registro Cabecera
 				  </div>
 				  <div class="card-body">
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post"  enctype="multipart/form-data">
 					  	<div class="form-group row">
 					    	<label for="nombre" class="col-sm-4 col-form-label">Nombre de la Organizacion:</label>
 					    	<div class="col-sm-8">
@@ -248,7 +247,7 @@ if(isset($_POST['BtnGuardar']))
 					  	<div class="form-group row">
 					  		<div class="col-sm-4">Logotipo:</div>
 					    	<div class="col-sm-8">
-					      	<input type="file" id="archivo" name="TxtImagen">
+					      		<input type="file" id="archivo" name="TxtLogotipo">
 					    	</div>
 					  	</div>
 
