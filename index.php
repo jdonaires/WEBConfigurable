@@ -1,20 +1,16 @@
-
 <?php
+	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
+	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NoticiasDAO.php');
 
-require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
-require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NoticiasDAO.php');
+	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Nosotros.php');
+	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NosotrosDAO.php');
 
-require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Nosotros.php');
-require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NosotrosDAO.php');
-
-
-
-$Nosotros = new Nosotros();
-$NosotrosDAO = new NosotrosDAO();
+	$Nosotros = new Nosotros();
+	$NosotrosDAO = new NosotrosDAO();
 
 
-$Noticias = new Noticias();
-$NoticiasDAO = new NoticiasDAO();
+	$Noticias = new Noticias();
+	$NoticiasDAO = new NoticiasDAO();
 
 	$ResulNoticias = array();//VARIABLE TIPO RESULTADO
 	
@@ -27,17 +23,9 @@ $NoticiasDAO = new NoticiasDAO();
     $ResulNosotros = array();//VARIABLE TIPO RESULTADO
     $Nosotros->__SET('Opcion', 'T');
 	$ResulNosotros = $NosotrosDAO->Listar($Nosotros);
-	
-	
-						foreach( $ResulNosotros as $ReNo){
-							
-							$DescripcionRuta=$ReNo->__GET('Descripcion');
-						
-						
-
-						}
-
-					
+	foreach( $ResulNosotros as $ReNo){
+		$DescripcionRuta=$ReNo->__GET('Descripcion');
+	}
 ?>
 
 
@@ -163,23 +151,15 @@ $NoticiasDAO = new NoticiasDAO();
             
             <?php 
 			foreach( $ResulNoticias as $ResulNot){
-			echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
-            echo "<img src='imagenes/".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
-           echo  "<div class='noticias_descripcion'>";
-              echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
-              echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
-            echo "</div>                </div></a>";
-			
+				echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
+            	echo "<img src='".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
+           		echo  "<div class='noticias_descripcion'>";
+              	echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
+              	echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
+            	echo "</div>                </div></a>";
 			}
 			
 			 ?>
-            
-            
-            
-            
-            
-        
-          
                 </div>
         </div>
         </div>
