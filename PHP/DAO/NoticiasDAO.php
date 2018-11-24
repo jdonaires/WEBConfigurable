@@ -1,6 +1,6 @@
 <?php
-require_once('PHP/DAL/DBAccess.php');
-require_once('PHP/BOL/Noticias.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/DAL/DBAccess.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/BOL/Noticias.php');
 
 class NoticiasDAO
 {
@@ -57,7 +57,7 @@ class NoticiasDAO
 				$per->__SET('URL', $r->URL);
 				$per->__SET('Posicion', $r->Posicion);
 				$per->__SET('IdUsuario', $r->IdUsuario);
-				
+
 
 
 				$result[] = $per;
