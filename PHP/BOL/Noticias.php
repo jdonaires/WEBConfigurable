@@ -1,5 +1,5 @@
 <?php
-echo "hola usuario";
+
 class Noticias
 {
 	private $IdNoticias;

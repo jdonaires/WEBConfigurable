@@ -1,9 +1,11 @@
 <?php
 
-class Nosotros
+class Slider
 {
-	private $IdNosotros;
+	private $IdSlider;
 	private $Descripcion;
+	private $Enlace;
+	private $Imagen;
 	private $IdUsuario;
 	private $Opcion;
 

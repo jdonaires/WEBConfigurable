@@ -1,11 +1,13 @@
 <?php
 
-class Nosotros
+class ConoceMas
 {
-	private $IdNosotros;
+	private $IdConoceMas;
 	private $Descripcion;
+	private $URL;
+	private $Image;
 	private $IdUsuario;
-	private $Opcion;
+	private $_Opcion;
 
 	public function __GET($x)
 	{

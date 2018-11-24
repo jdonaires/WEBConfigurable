@@ -1,14 +1,14 @@
 <?php
-echo "hola usuario";
+
 class Usuario
 {
-	private $_IdUsuario;
-	private $_Nombres;
-	private $_Apellidos;
-	private $_Correo;
-	private $_Contraseña;
-	private $_Estado;
-	private $_Opcion;
+	private $IdUsuario;
+	private $Nombres;
+	private $Apellidos;
+	private $Correo;
+	private $Contraseña;
+	private $Estado;
+	private $Opcion;
 
 	public function __GET($x)
 	{
@@ -18,6 +18,6 @@ class Usuario
 	{
 		return $this->$x = $y;
 	}
-		
+
 }
 ?>

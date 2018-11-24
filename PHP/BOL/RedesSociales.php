@@ -1,9 +1,11 @@
 <?php
 
-class Nosotros
+class RedesSociales
 {
-	private $IdNosotros;
+	private $IdRedesSociales;
 	private $Descripcion;
+	private $Enlace;
+	private $Imagen;
 	private $IdUsuario;
 	private $Opcion;
 

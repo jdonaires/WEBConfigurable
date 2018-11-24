@@ -26,13 +26,13 @@ class NoticiasDAO
 		$statement->bindValue(6,$Campo->__GET('Posicion'));
 		$statement->bindValue(7,$Campo->__GET('IdUsuario'));
 		$statement->bindValue(8,$Campo->__GET('Opcion'));
-	echo "hola";
+
     $statement -> execute();
-	echo "hola";
+
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
-				echo "holae";
+
 		}
 	}
 
@@ -57,7 +57,7 @@ class NoticiasDAO
 				$per->__SET('URL', $r->URL);
 				$per->__SET('Posicion', $r->Posicion);
 				$per->__SET('IdUsuario', $r->IdUsuario);
-				$per->__SET('_Contraseña', $r->Contraseña);
+				
 
 
 				$result[] = $per;

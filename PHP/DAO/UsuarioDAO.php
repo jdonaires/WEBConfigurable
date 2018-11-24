@@ -10,7 +10,7 @@ class UsuarioDAO
 	{
 			$dba = new DBAccess();
 			$this->pdo = $dba->get_connection();
-			echo "hola";
+
 	}
 
 	public function Registrar(Usuario $Usuario)
@@ -18,20 +18,20 @@ class UsuarioDAO
 		try
 		{
 		$statement = $this->pdo->prepare("CALL PA_Set_Usuario(?,?,?,?,?,?,?)");
-    $statement->bindParam(1,$Usuario->__GET('_IdUsuario'));
-		$statement->bindParam(2,$Usuario->__GET('_Nombres'));
-		$statement->bindParam(3,$Usuario->__GET('_Apellidos'));
-		$statement->bindParam(4,$Usuario->__GET('_Correo'));
-		$statement->bindParam(5,$Usuario->__GET('_Contraseña'));
-		$statement->bindParam(6,$Usuario->__GET('_Estado'));
-		$statement->bindParam(7,$Usuario->__GET('_Opcion'));
-	echo "hola";
+    $statement->bindValue(1,$Usuario->__GET('IdUsuario'));
+		$statement->bindVAlue(2,$Usuario->__GET('Nombres'));
+		$statement->bindValue(3,$Usuario->__GET('Apellidos'));
+		$statement->bindValue(4,$Usuario->__GET('Correo'));
+		$statement->bindValue(5,$Usuario->__GET('Contraseña'));
+		$statement->bindValue(6,$Usuario->__GET('Estado'));
+		$statement->bindValue(7,$Usuario->__GET('Opcion'));
+
     $statement -> execute();
-	echo "hola";
+
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
-				echo "holae";
+
 		}
 	}
 
@@ -42,20 +42,20 @@ class UsuarioDAO
 			$result = array();
 
 			$statement = $this->pdo->prepare("call Pa_Get_Usuario(?,?,?)");
-			$statement->bindParam(1,$Usuario->__GET('_Correo'));
-			$statement->bindParam(2,$Usuario->__GET('_Contraseña'));
-			$statement->bindParam(3,$Usuario->__GET('_Opcion'));
+			$statement->bindValue(1,$Usuario->__GET('Correo'));
+			$statement->bindValue(2,$Usuario->__GET('Contraseña'));
+			$statement->bindValue(3,$Usuario->__GET('Opcion'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
 				$per = new Usuario();
 
-				$per->__SET('_IdUsuario', $r->IdUsuario);
-				$per->__SET('_Nombres', $r->Nombres);
-				$per->__SET('_Apellidos', $r->Apellidos);
-				$per->__SET('_Correo', $r->Correo);
-								$per->__SET('_Contraseña', $r->Contraseña);
+				$per->__SET('IdUsuario', $r->IdUsuario);
+				$per->__SET('Nombres', $r->Nombres);
+				$per->__SET('Apellidos', $r->Apellidos);
+				$per->__SET('Correo', $r->Correo);
+								$per->__SET('Contraseña', $r->Contraseña);
 
 
 				$result[] = $per;

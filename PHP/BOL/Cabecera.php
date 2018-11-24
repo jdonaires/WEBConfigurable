@@ -1,9 +1,12 @@
 <?php
 
-class Nosotros
+class Cabecera
 {
-	private $IdNosotros;
-	private $Descripcion;
+	private $IdContacto;
+	private $NombreOrganizacion;
+	private $Email;
+	private $Telefono;
+	private $Logotipo;
 	private $IdUsuario;
 	private $Opcion;
 

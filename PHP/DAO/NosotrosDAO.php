@@ -1,6 +1,6 @@
 <?php
-require_once('PHP/DAL/DBAccess.php');
-require_once('PHP/BOL/Nosotros.php');
+require_once('C:/xampp/htdocs/WEBConfigurable/PHP/DAL/DBAccess.php');
+require_once('C:/xampp/htdocs/WEBConfigurable/PHP/BOL/Nosotros.php');
 
 class NosotrosDAO
 {

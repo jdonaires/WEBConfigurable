@@ -18,17 +18,17 @@ class ImagenNosotrosDAO
 		try
 		{
 		$statement = $this->pdo->prepare("CALL PA_Set_ImagenNosotros(?,?,?,?)");
-    	$statement->bindParam(1,$Campo->__GET('IdImagenNosotros'));
-		$statement->bindParam(2,$Campo->__GET('Image'));
-		$statement->bindParam(3,$Campo->__GET('IdUsuario'));
+    	$statement->bindValue(1,$Campo->__GET('IdImagenNosotros'));
+		$statement->bindValue(2,$Campo->__GET('Image'));
+		$statement->bindVAlue(3,$Campo->__GET('IdUsuario'));
 
-		$statement->bindParam(4,$Campo->__GET('Opcion'));
-	echo "hola";
+		$statement->bindValue(4,$Campo->__GET('Opcion'));
+
     $statement -> execute();
-	echo "hola";
+
 		} catch (Exception $e)
 		{
-			echo "holae";
+
 			die($e->getMessage());
 
 		}
@@ -42,7 +42,7 @@ class ImagenNosotrosDAO
 
 			$statement = $this->pdo->prepare("call Pa_Get_ImagenNosotros(?)");
 
-			$statement->bindParam(1,$Campo->__GET('Opcion'));
+			$statement->bindValue(1,$Campo->__GET('Opcion'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
