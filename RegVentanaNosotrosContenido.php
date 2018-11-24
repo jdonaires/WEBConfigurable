@@ -53,35 +53,26 @@ if(isset($_POST['BtnGuardar']))
 {
 	echo $_POST['TxtTema'];
 
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImage1']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImage1']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
+
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImage2']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImage2']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
+
 	$per->__SET('IdInfoNostros', "0");
 	$per->__SET('Tema', $_POST['TxtTema']);
 	$per->__SET('Descripcion',        $_POST['TxtContenido']);
-	$per->__SET('Image1', $_POST['TxtImage1']);
-	$per->__SET('Image2', $_POST['TxtImage2']);
+	$per->__SET('Image1', "FILES_IMAGES".$_FILES['TxtImage1']['tmp_name']);
+	$per->__SET('Image2', "FILES_IMAGES".$_FILES['TxtImage2']['tmp_name']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 	echo "HolaInsertando";
-
-
 	$perDAO->Registrar($per);
-
-
-
 }
 
-
-
 ?>
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -238,7 +229,7 @@ if(isset($_POST['BtnGuardar']))
 
 
 
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post"  enctype="multipart/form-data">
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">Titulo de la Empresa:</label>
 					    	<div class="col-sm-8">

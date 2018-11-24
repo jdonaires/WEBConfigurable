@@ -51,20 +51,20 @@ $perDAO = new ConoceMasDAO();
 
 if(isset($_POST['BtnGuardar']))
 {
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen1']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImagen1']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen2']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImagen2']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
 
 	$per->__SET('IdConoceMas', "0");
 	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
-	$per->__SET('URL',        $_POST['TxtImagen1']);
-	$per->__SET('Image', $_POST['TxtImagen2']);
+	$per->__SET('URL', "FILES_IMAGEN/".$_FILES['TxtImagen1']['name']);
+	$per->__SET('Image', "FILES_IMAGEN/".$_FILES['TxtImagen2']['name']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
-
-
-
 	$perDAO->Registrar($per);
-
-
-
 }
 
 
@@ -248,7 +248,7 @@ if(isset($_POST['BtnGuardar']))
 
 
 
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
 					  	<div class="form-group row">
 					    	<label for="descripcion" class="col-sm-3 col-form-label">Descripcion:</label>
 					    	<div class="col-sm-8">

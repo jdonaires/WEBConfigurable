@@ -31,14 +31,14 @@ $CabeceraDAO = new CabeceraDAO();
 $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 
 
-					foreach( $ResulCabecera as $ReCa){
+foreach( $ResulCabecera as $ReCa){
 
 
-						$Logotipo=$ReCa->__GET('Logotipo');
+	$Logotipo=$ReCa->__GET('Logotipo');
 
 
 
-					}
+}
 
 ?>
 
@@ -51,11 +51,15 @@ $perDAO = new NoticiasDAO();
 
 if(isset($_POST['BtnGuardar']))
 {
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImagen']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
+
 	echo  $_POST['TxtDescripcion'];
 	$per->__SET('IdNoticias', "0");
 	$per->__SET('TituloNoticia', $_POST['TxtTituloNoticia']);
-	$per->__SET('Descripcion',        $_POST['TxtDescripcion']);
-	$per->__SET('Imagen', $_POST['TxtImagen']);
+	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
+	$per->__SET('Imagen', "FILE_IMAGE/".$_FILES['TxtImagen']['name']);
 	$per->__SET('URL', $_POST['TxtURL']);
 	$per->__SET('Posicion', $_POST['TxtPosicion']);
 	$per->__SET('IdUsuario', $ID);
@@ -226,7 +230,7 @@ if(isset($_POST['BtnGuardar']))
 				    	Registro Noticia
 				  </div>
 				  <div class="card-body">
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">Titulo de la Noticia:</label>
 					    	<div class="col-sm-8">

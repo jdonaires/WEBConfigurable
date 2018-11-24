@@ -50,7 +50,7 @@ $_SESSION['IdUsuario'] = $resul->__GET('IdUsuario');
 $_SESSION['Nombre'] = $resul->__GET('Nombres')." ".$resul->__GET('Apellidos');
 echo $_SESSION['Nombre'];
 
-header('Location: http://localhost/WEBConfigurable/VentanaPrincipalConfig.php');
+header('Location: VentanaPrincipalConfig.php');
 
 }
 

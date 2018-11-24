@@ -18,10 +18,6 @@ require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\SliderDAO.php');
 
 require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\ConoceMas.php');
 require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\ConoceMasDAO.php');
-
-
-
-
 $ConoceMas = new ConoceMas();
 $ConoceMasDAO = new ConoceMasDAO();
 
@@ -237,7 +233,7 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
             <?php 
 			foreach( $ResulNoticias as $ResulNot){
 			echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
-            echo "<img src='imagenes/".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
+            echo "<img src='".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
            echo  "<div class='noticias_descripcion'>";
               echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
               echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
