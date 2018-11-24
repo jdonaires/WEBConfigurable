@@ -1,7 +1,48 @@
 
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
+	$_SESSION['loggedin'] = true;
+	$ID=$_SESSION['IdUsuario'];
+	$Nombre= $_SESSION['Nombre'] ;
+
+
+
+} else {
+
+	header('Location: login.php');
+
+exit;
+}
+
+/*--------------------------------------------------*/
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Cabecera.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\CabeceraDAO.php');
+
+$Cabecera = new Cabecera();
+$CabeceraDAO = new CabeceraDAO();
+
+/*Cabecera*/
+	$ResulCabecera = array();//VARIABLE TIPO RESULTADO
+	$Cabecera->__SET('Opcion', 'T');
+$ResulCabecera = $CabeceraDAO->Listar($Cabecera);
+
+
+					foreach( $ResulCabecera as $ReCa){
+
+
+						$Logotipo=$ReCa->__GET('Logotipo');
+
+
+
+					}
+
+?>
 
 <?php
-
 require_once('PHP/BOL/Noticias.php');
 require_once('PHP/DAO/NoticiasDAO.php');
 
@@ -10,24 +51,21 @@ $perDAO = new NoticiasDAO();
 
 if(isset($_POST['BtnGuardar']))
 {
-	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen']['name']);
-	$Ruta_Actual_Img = $_FILES['TxtImagen']['tmp_name'];
-	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
 	echo  $_POST['TxtDescripcion'];
 	$per->__SET('IdNoticias', "0");
 	$per->__SET('TituloNoticia', $_POST['TxtTituloNoticia']);
 	$per->__SET('Descripcion',        $_POST['TxtDescripcion']);
-	$per->__SET('Imagen', "FILE_IMAGE/".$_FILES['TxtImagen']['name']);
+	$per->__SET('Imagen', $_POST['TxtImagen']);
 	$per->__SET('URL', $_POST['TxtURL']);
 	$per->__SET('Posicion', $_POST['TxtPosicion']);
-	$per->__SET('IdUsuario', "1");
+	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
-	
-	
+
+
 
 	$perDAO->Registrar($per);
-	
-	
+
+
 
 }
 
@@ -86,96 +124,95 @@ if(isset($_POST['BtnGuardar']))
 	<div class="container-fluid">
 		<header class="row">
 			<div class="col-3 col-xs-12">
-				<img  src="img/logo.png" alt="Logo Empresa" class="img-fluid logo">
+				<img  src="Imagenes/<?php echo	$Logotipo;?>" alt="Logo Empresa" class="img-fluid logo">
 			</div>
 			<div class="col-1 offset-5 text-right">
 				<img  src="img/user.jpg" alt="Foto" class="rounded-circle foto" width="65" height="65">
 			</div>
 			<div class="col-2-auto text-right">
 				<p>Usuario Administrador</p>
-				<p>De La Cruz Huarote, Daniel</p>
+				<p><?php echo $Nombre;?></p>
 			</div>
 			<div class="col-1 text-center align-self-center">
-				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
+				<a href="logout.php"><img src="icono_config/icono_salir.png"></a>
 			</div>
 		</header>
-		
+
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Acceso
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
-				    <a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
-				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
-				  </div>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Acceso
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
+						<a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
+						<a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
+					</div>
 				</div>
-				
-
-
-				<!-- <a href="login.html" class="btn items">Acceso</a> -->
 
 				<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Registro Principal
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registro Principal
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-					
-				  </div>
+
+					</div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Registro Noticias
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				   <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
-				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
-				  </div>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registro Noticias
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
+					 <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
+
+					</div>
 				</div>
-				  
+
 					<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Registro Conoce mas
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
-				  </div>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registro Conoce mas
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
+						<a class="dropdown-item" href="RegConoceMas.php">Registro Conoce Mas</a>
+
+					</div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Registro Slider
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				   <a class="dropdown-item" href="ListaSlider.php">Lista Slider</a>
-				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
-				  </div>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registro Slider
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="ListaSlider.php">Lista Slider</a>
+					 <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
+					</div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Nosotros
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="RegNosotrosImagenFondo.php">Imagen de Portada</a>
-				    <a class="dropdown-item" href="RegNoticia.php">Contenido</a>
-				  </div>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Nosotros
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="RegNosotrosImagenFondo.php">Imagen de Portada</a>
+						<a class="dropdown-item" href="RegVentanaNosotrosContenido.php">Contenido</a>
+					</div>
 				</div>
 				<div class="dropdown opcion_menu">
-				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Registro Redes Sociales
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista Redes Sociales</a>
-				    <a class="dropdown-item" href="RegRedesSociales.php">Registro Redes Sociales</a>
-				  </div>
+					<button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Registro Redes Sociales
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="Lista_Redes_Sociales.php">Lista Redes Sociales</a>
+						<a class="dropdown-item" href="RegRedesSociales.php">Registro Redes Sociales</a>
+					</div>
 				</div>
 
 				</div>
@@ -189,13 +226,13 @@ if(isset($_POST['BtnGuardar']))
 				    	Registro Noticia
 				  </div>
 				  <div class="card-body">
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">Titulo de la Noticia:</label>
 					    	<div class="col-sm-8">
 					      		<input type="text" class="form-control" id="titulo" placeholder="Titulo de la Noticia" name="TxtTituloNoticia">
 								</div>
-							
+
 
 					  	</div>
 					  	<div class="form-group row">
@@ -203,18 +240,18 @@ if(isset($_POST['BtnGuardar']))
 					    	<div class="col-sm-8">
 					      		<input type="text" class="form-control" id="descripcion" placeholder="Descripcion de la Noticia" name="TxtDescripcion">
 								</div>
-								
-						
 
 
-								
+
+
+
 					  	</div>
 					  	<div class="form-group row">
 					  		<div class="col-sm-3">Seleccionar Imagen:</div>
 					    	<div class="col-sm-8">
 					      		<input type="file" id="archivo" name="TxtImagen">
 								</div>
-								
+
 								<div class="card-body">
 				    <form>
 					  	<div class="form-group row">
@@ -244,7 +281,7 @@ if(isset($_POST['BtnGuardar']))
 					      		<textarea name="contenido" id="contenido" class="form-control" rows="5"></textarea>
 					    	</div>
 					  	</div>       -->
-					  	
+
 					  	<div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					  		<div class="col-sm-3">
@@ -256,7 +293,7 @@ if(isset($_POST['BtnGuardar']))
 					      		<input type="submit" class="btn btn-success text-center" name="BtnGuardar" value="Guardar">
 					    	</div>
 					  	</div>
-						
+
 					</form>
 				  </div>
 				</div>
@@ -264,7 +301,7 @@ if(isset($_POST['BtnGuardar']))
 		</section>
 
 	</div>
-	
+
 
 
 

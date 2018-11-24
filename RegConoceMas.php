@@ -41,19 +41,21 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 					}
 
 ?>
-<?php
-require_once('PHP/BOL/Nosotros.php');
-require_once('PHP/DAO/NosotrosDAO.php');
 
-$per = new Nosotros();
-$perDAO = new NosotrosDAO();
+<?php
+require_once('PHP/BOL/ConoceMas.php');
+require_once('PHP/DAO/ConoceMasDAO.php');
+
+$per = new ConoceMas();
+$perDAO = new ConoceMasDAO();
 
 if(isset($_POST['BtnGuardar']))
 {
 
-	$per->__SET('IdNostros', "0");
-
+	$per->__SET('IdConoceMas', "0");
 	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
+	$per->__SET('URL',        $_POST['TxtImagen1']);
+	$per->__SET('Image', $_POST['TxtImagen2']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 
@@ -70,53 +72,53 @@ if(isset($_POST['BtnGuardar']))
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Pie de Portada</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<meta charset="UTF-8">
+	<title>Actualizar Imagen</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<style>
-  	 header {
- 	 font-family: Notable;
-  	 color: #fff;
-   	 background-color: #3e3f42;
-  	 padding-top: 20px;
-   	 padding-left: 20px;
-   	 padding-bottom: 20px;
-    	 border-bottom: 4px #fff solid;
-	}
+		header{
+			color: #fff;
+			background-color: #3e3f42;
+			padding-top: 20px;
+			padding-left: 20px;
+			padding-bottom: 20px;
+			border-bottom: 4px #fff solid;
+		}
 
-	header .logo {
- 	 min-height: 62px;
-   	 max-height: 62px;
-  	 min-width: 155px;
-	}
+		header .logo{
+			min-height: 62px;
+			max-height: 62px;
+			min-width: 155px;
+		}
 
-	.menu {
- 	 background-color: #f2f2f2;
-	}
+		.menu{
+			background-color: #f2f2f2;
+		}
 
-	.opcion_menu {
- 	 margin-right: 20px;
-	}
+		.opcion_menu{
+			margin-right: 20px;
+		}
 
-	.items {
- 	 color: #767777;
- 	 font-family: 'Georgia';
-	}
+		.items{
+			color: gray;
+			font-family: 'Georgia';
+		}
 
-	.contenido {
- 	 margin-top: 30px;
-	}
+		/*.items:hover{
+			color: green;
+			font-family: 'Georgia';
+		}*/
 
-</style>
+		.contenido {
+			margin-top: 30px;
+		}
+	</style>
 </head>
-
 <body>
 	<div class="container-fluid">
 		<header class="row">
@@ -134,7 +136,6 @@ if(isset($_POST['BtnGuardar']))
 			<a href="logout.php"><img src="icono_config/icono_salir.png"></a>
 			</div>
 		</header>
-
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
@@ -216,47 +217,83 @@ if(isset($_POST['BtnGuardar']))
 			</div>
 		</section>
 
-        <section class="row contenido justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        Actualizar Pie de Portada
-                    </div>
-                    <div class="card-body">
-                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
-                            <div class="form-group row">
-                                <label for="titulo" class="col-sm-3 col-form-label">Nosotros (Contenido) <br><br>50 carácteres max.</label>
 
-                                <div class="col-sm-8">
+		<section class="row contenido">
+			<div class="col-md-2">
+				<button class="btn btn-secondary form-control mb-5 botones"><img src="img/icono_lista.png">
+					&nbsp Lista de Imagenes
+				</button>
 
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="TxtDescripcion"></textarea>
-                                </div>
-                            </div>
+				<button class="btn btn-secondary form-control botones">
+				<img src="img/icono_anadir.png">
+					&nbsp Agregar Imagen
+				</button>
+			</div>
 
-
-                            <div class="form-group row">
-                                <div class="col-sm-5 "></div>
-
-                                <div class="col-sm-3">
-                                    <input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
+			<div class="col-md-8 offset-md-1">
+				<div class="card">
+				  <div class="card-header">
+				    Actualizar Imagen
+				  </div>
+				  <div class="card-body">
 
 
 
 
 
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+					  	<div class="form-group row">
+					    	<label for="descripcion" class="col-sm-3 col-form-label">Descripcion:</label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control" id="descripcion" placeholder="Descripcion" name="TxtDescripcion">
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					    	<label for="enlace" class="col-sm-3 col-form-label">Ingresar Imagenes:</label>
+					    	<div class="col-sm-8">
+					 <input type="file" id="archivo" value="Seleccionar Archivo" name="TxtImagen1">
+					    	</div>
+					  	</div>
+					  	<!--<div class="form-group row">
+					    	<label for="posicion" class="col-sm-3 col-form-label">Posicion:</label>
+					    	<div class="col-sm-4">
+					      		<input type="text" class="form-control" id="posicion" placeholder="Posicion">
+					    	</div>
+					  	</div> -->
+					  	<div class="form-group row">
+					  		<div class="col-sm-3"></div>
+					    	<div class="col-sm-8">
+					      		<input type="file" id="archivo" value="Seleccionar Archivo" name="TxtImagen2">
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					  		<div class="col-sm-3"></div>
+					    	<div class="col-sm-8">
+					      		<input type="submit" class="btn btn-green text-center" style="background: green; border: green; color:white" value="Guardar" name="BtnGuardar">
+					    	</div>
+					  	</div>
+
+					</form>
+				  </div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+
+
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>

@@ -1,3 +1,21 @@
+<?PHP
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\ConoceMas.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\ConoceMasDAO.php');
+
+
+$ConoceMas = new ConoceMas();
+$ConoceMasDAO = new ConoceMasDAO();
+
+/*CONOCEMAS*/
+
+$ResulConoceMas = array();//VARIABLE TIPO RESULTADO
+
+    $ConoceMas->__SET('Opcion', 'T');
+	$ResulConoceMas = $ConoceMasDAO->Listar($ConoceMas);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +79,7 @@
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Acceso
@@ -72,7 +90,7 @@
 				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Principal
@@ -80,7 +98,7 @@
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-					
+
 				  </div>
 				</div>
 
@@ -93,7 +111,7 @@
 				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
-				  
+
 					<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Conoce mas
@@ -102,7 +120,7 @@
 				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Slider
@@ -112,7 +130,7 @@
 				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
@@ -152,42 +170,35 @@
 				<h4 class="text-muted mb-3">Imagenes Conoce Mas</h4>
 				<table class="table table-responsive">
 				    	<thead>
-				    		<th>Imagen</th>
+				    		<th>Imagen 1</th>
+				    		<th>Imagen 2</th>
 				    		<th>Descripcion</th>
-				    		<th>Posicion</th>
 				    		<th>Opciones</th>
 				    	</thead>
 				    	<tbody>
-				    		<tr>
-				    			<td><img src="img/fb_icono.png" width="150" height="150"></td>
-				    			<td class="">Imagen del logotipo de la empresa Facebook</td>
-				    			<td>LID</td>
-				    			<td>
-				    				<button class="btn btn-link"><img src="img/icono_modificar.png"></button>
-				    				<br>
-				    				<button class="btn btn-link"><img src="img/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td><img src="img/twiter1.png" width="150" height="150"></td>
-				    			<td>Imagen del logotipo de la empresa Twitter</td>
-				    			<td>LDS</td>
-				    			<td>
-				    				<button class="btn btn-link"><img src="img/icono_modificar.png"></button>
-				    				<br>
-				    				<button class="btn btn-link"><img src="img/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td><img src="img/instagram1.png" width="150" height="150"></td>
-				    			<td>Imagen del logotipo de la empresa Instagram</td>
-				    			<td>LIS</td>
-				    			<td>
-				    				<button class="btn btn-link"><img src="img/icono_modificar.png"></button>
-				    				<br>
-				    				<button class="btn btn-link"><img src="img/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
+
+
+									<?php
+						foreach( $ResulConoceMas as $ReCM){
+						echo "<tr>";
+						echo "<td><img src='imagenes/".$ReCM->__GET('URL')."' width='150' height='150'></td>";
+						echo "<td><img src='imagenes/".$ReCM->__GET('Image')."' width='150' height='150'></td>";
+						echo "	<td>".$ReCM->__GET('Descripcion')."</td>";
+					echo	"<td><a href='PHP/ELIMINAR/Eliminar_ConoceMas.php?a=".$ReCM->__GET('IdConoceMas')."'><img src='img/icono_cerrar.png'></a>	</td>";
+
+
+
+
+echo "		</tr>";
+
+
+
+						}
+						?>
+
+
+
+				    	
 				    	</tbody>
 				    </table>
 			</div>

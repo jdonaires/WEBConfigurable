@@ -1,3 +1,79 @@
+
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
+	$_SESSION['loggedin'] = true;
+	$ID=$_SESSION['IdUsuario'];
+	$Nombre= $_SESSION['Nombre'] ;
+
+
+
+} else {
+
+	header('Location: login.php');
+
+exit;
+}
+
+/*--------------------------------------------------*/
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Cabecera.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\CabeceraDAO.php');
+
+$Cabecera = new Cabecera();
+$CabeceraDAO = new CabeceraDAO();
+
+/*Cabecera*/
+	$ResulCabecera = array();//VARIABLE TIPO RESULTADO
+	$Cabecera->__SET('Opcion', 'T');
+$ResulCabecera = $CabeceraDAO->Listar($Cabecera);
+
+
+					foreach( $ResulCabecera as $ReCa){
+
+
+						$Logotipo=$ReCa->__GET('Logotipo');
+
+
+
+					}
+
+?>
+
+
+
+<?php
+require_once('PHP/BOL/Cabecera.php');
+require_once('PHP/DAO/CabeceraDAO.php');
+
+$per = new Cabecera();
+$perDAO = new CabeceraDAO();
+
+if(isset($_POST['BtnGuardar']))
+{
+	$per->__SET('IdContacto', "0");
+	$per->__SET('NombreOrganizacion', $_POST['TxtNombreOrganizacion']);
+	$per->__SET('Email',        $_POST['TxtEmail']);
+	$per->__SET('Telefono', $_POST['TxtTelefono']);
+	$per->__SET('Logotipo', $_POST['TxtLogotipo']);
+	$per->__SET('IdUsuario', $ID);
+	$per->__SET('Opcion', "I");
+
+
+
+	$perDAO->Registrar($per);
+
+
+
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,24 +120,24 @@
 	<div class="container-fluid">
 		<header class="row">
 			<div class="col-3 col-xs-12">
-				<img  src="img/logo.png" alt="Logo Empresa" class="img-fluid logo">
+				<img  src="Imagenes/<?php echo	$Logotipo;?>" alt="Logo Empresa" class="img-fluid logo">
 			</div>
 			<div class="col-1 offset-5 text-right">
 				<img  src="img/user.jpg" alt="Foto" class="rounded-circle foto" width="65" height="65">
 			</div>
 			<div class="col-2-auto text-right">
 				<p>Usuario Administrador</p>
-				<p>Martinez Perez, Juan</p>
+				<p><?php echo $Nombre;?></p>
 			</div>
 			<div class="col-1 text-center align-self-center">
-				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
+				<a href="logout.php"><img src="icono_config/icono_salir.png"></a>
 			</div>
 		</header>
 
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Acceso
@@ -80,10 +156,10 @@
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-					
+
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
@@ -91,19 +167,21 @@
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				   <a class="dropdown-item" href="Lista_de_Noticias.php">Lista de Noticias</a>
 				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
-				
+
 				  </div>
 				</div>
-				  
+
 					<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Conoce mas
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
+					  <a class="dropdown-item" href="RegConoceMas.php">Registro Conoce Mas</a>
+
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Slider
@@ -113,14 +191,14 @@
 				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegNosotrosImagenFondo.php">Imagen de Portada</a>
-				    <a class="dropdown-item" href="RegNoticia.php">Contenido</a>
+				    <a class="dropdown-item" href="RegVentanaNosotrosContenido.php">Contenido</a>
 				  </div>
 				</div>
 				<div class="dropdown opcion_menu">
@@ -144,41 +222,40 @@
 				    	Registro Cabecera
 				  </div>
 				  <div class="card-body">
-				    <form>
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 					  	<div class="form-group row">
 					    	<label for="nombre" class="col-sm-4 col-form-label">Nombre de la Organizacion:</label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control" id="nombre" placeholder="Nombre de la Organizacion">
+					      		<input type="text" class="form-control" id="nombre" name="TxtNombreOrganizacion" placeholder="Nombre de la Organizacion">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					    	<label for="email" class="col-sm-4 col-form-label">Email:</label>
 					    	<div class="col-sm-8">
-					      		<input type="email" class="form-control" id="email" placeholder="email@example.com">
+					      		<input type="email" class="form-control" id="email" name="TxtEmail" placeholder="email@example.com">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					    	<label for="telefono" class="col-sm-4 col-form-label">Telefono:</label>
 					    	<div class="col-sm-4">
-					      		<input type="text" class="form-control" id="telefono" placeholder="Telefono">
+					      		<input type="text" class="form-control" id="telefono" name="TxtTelefono" placeholder="Telefono">
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">
 					  		<div class="col-sm-4">Logotipo:</div>
 					    	<div class="col-sm-8">
-					      		<input type="file" id="archivo">
+					      		<input type="file" id="archivo" name="TxtLogotipo">
 					    	</div>
 					  	</div>
-					  	
+
 					  	<div class="form-group row">
 					  		<div class="col-sm-4"></div>
 					  		<div class="col-sm-3">
-					      		<button class="btn btn-danger text-center" style="background: green; border: green; color:white" >
-					      			<img src="img/icono_actualizar.png">&nbsp Actualizar
-					      		</button>
+					      		<input type="submit" class="btn btn-success text-center" name="BtnGuardar" value="Guardar">
+
 					    	</div>
 					  	</div>
-						
+
 					</form>
 				  </div>
 				</div>
@@ -186,7 +263,7 @@
 		</section>
 
 	</div>
-	
+
 
 	<script src="js/jquery.js"></script>
 	<script src="js/popper.min.js"></script>

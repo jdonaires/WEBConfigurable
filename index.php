@@ -1,21 +1,78 @@
+
 <?php
-	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
-	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NoticiasDAO.php');
 
-	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Nosotros.php');
-	require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NosotrosDAO.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NoticiasDAO.php');
 
-	$Nosotros = new Nosotros();
-	$NosotrosDAO = new NosotrosDAO();
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Nosotros.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NosotrosDAO.php');
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Cabecera.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\CabeceraDAO.php');
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\RedesSociales.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\RedesSocialesDAO.php');
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Slider.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\SliderDAO.php');
+
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\ConoceMas.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\ConoceMasDAO.php');
 
 
-	$Noticias = new Noticias();
-	$NoticiasDAO = new NoticiasDAO();
+
+
+$ConoceMas = new ConoceMas();
+$ConoceMasDAO = new ConoceMasDAO();
+
+$Slider = new Slider();
+$SliderDAO = new SliderDAO();
+
+$RedesSociales = new RedesSociales();
+$RedesSocialesDAO = new RedesSocialesDAO();
+
+
+$Cabecera = new Cabecera();
+$CabeceraDAO = new CabeceraDAO();
+
+
+$Nosotros = new Nosotros();
+$NosotrosDAO = new NosotrosDAO();
+
+
+$Noticias = new Noticias();
+$NoticiasDAO = new NoticiasDAO();
+
+
 
 	$ResulNoticias = array();//VARIABLE TIPO RESULTADO
 	
     $Noticias->__SET('Opcion', 'T');
 	$ResulNoticias = $NoticiasDAO->Listar($Noticias); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+
+
+/*CONOCEMAS*/
+
+$ResulConoceMas = array();//VARIABLE TIPO RESULTADO
+	
+    $ConoceMas->__SET('Opcion', 'T');
+	$ResulConoceMas = $ConoceMasDAO->Listar($ConoceMas);
+
+
+/*SLIDER*/
+
+$ResulSlider = array();//VARIABLE TIPO RESULTADO
+	
+    $Slider->__SET('Opcion', 'T');
+	$ResulSlider = $SliderDAO->Listar($Slider);
+	
+/*REDES SOCIALES*/
+
+$ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
+	
+    $RedesSociales->__SET('Opcion', 'T');
+	$ResulRedesSociales = $RedesSocialesDAO->Listar($RedesSociales); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+	
 	
 	
 	
@@ -23,9 +80,37 @@
     $ResulNosotros = array();//VARIABLE TIPO RESULTADO
     $Nosotros->__SET('Opcion', 'T');
 	$ResulNosotros = $NosotrosDAO->Listar($Nosotros);
-	foreach( $ResulNosotros as $ReNo){
-		$DescripcionRuta=$ReNo->__GET('Descripcion');
-	}
+	
+	
+						foreach( $ResulNosotros as $ReNo){
+							
+							$DescripcionRuta=$ReNo->__GET('Descripcion');
+						
+						
+
+						}
+						
+						
+						
+							
+	/*Cabecera*/
+    $ResulCabecera = array();//VARIABLE TIPO RESULTADO
+    $Cabecera->__SET('Opcion', 'T');
+	$ResulCabecera = $CabeceraDAO->Listar($Cabecera);
+	
+	
+						foreach( $ResulCabecera as $ReCa){
+							
+							$Nombre=$ReCa->__GET('NombreOrganizacion');
+							$Email=$ReCa->__GET('Email');
+							$Telefono=$ReCa->__GET('Telefono');
+							$Logotipo=$ReCa->__GET('Logotipo');
+						
+						
+
+						}
+
+					
 ?>
 
 
@@ -60,39 +145,38 @@
         <div class="container-columnas">
             <div class="colu1">
                 <div class="rowi1">
-                <img src="imagenes/cupcake_delivery.png" alt="">
-                <h1>Slogan</h1>
+                <img src="imagenes/<?php echo $Logotipo; ?>" alt="">
+                <h1><?php echo $Nombre; ?></h1>
                 </div>
             </div>
             
             <div class="colu2">
                 <div class="rowi">
                 <img src="iconos/mensaje1.png">
-                <h1>paginaadministrable@upsjb.com</h1>
+                <h1><?php echo $Email; ?></h1>
                 <img src="iconos/telefono1.png">
-                <h1>(056)264010</h1>
+                <h1><?php echo $Telefono; ?></h1>
                 </div>
             <div class="rowi">
-            <a href="https://mail.google.com">
-                <img src="iconos/fb_icono.png">
-                </a>
-                <a href="https://mail.google.com">
-                <img src="iconos/twiter1.png">
-                </a>
-
-                <a href="https://mail.google.com">
-                <img src="iconos/instagram1.png">
-                </a>
-
-                <a href="https://mail.google.com">
-                <img src="iconos/google_mas.png">
-                </a>
-                <a href="https://mail.google.com">
-                <img src="iconos/youtube1.png">
-                </a>
-                <a href="https://mail.google.com">
-                <img src="iconos/linkedin1.png">
-                </a>
+            
+            
+             <?php 
+			foreach( $ResulRedesSociales as $ReRS){
+				
+				echo "<a href='https:/".$ReRS->__GET('Enlace')."'>";
+				echo "<img src='imagenes/".$ReRS->__GET('Imagen')."'>";	
+           		echo "</a>";
+			
+			}
+			
+			 ?>
+            
+            
+            
+            
+            
+            
+           
             </div>
         </div>
         </div>
@@ -111,21 +195,16 @@
 	</header>
         <div class="flexslider">  
     <ul class="slides"> 
-        <li>
-            <img src="imagenes/azul.jpg" alt="">
-            <section class="flex-slider">
-            <p>IMAGEN 1</p></section>
-        </li>
-        <li>
-            <img src="imagenes/oceano.jpg" alt="">
-            <section class="flex-slider">
-            <p>IMAGEN 2</p></section>
-        </li>
-        <li>
-            <img src="imagenes/verde.jpg" alt="">
-            <section class="flex-slider">
-            <p>IMAGEN 3</p></section>
-        </li>
+        <?php 
+		foreach( $ResulSlider as $ResulSl){
+        echo "<li>";
+            echo "<a href='".$ResulSl->__GET('Enlace')."'><img src='imagenes/".$ResulSl->__GET('Imagen')."' alt=''></a>";
+            echo "<section class='flex-slider'>";
+             echo "<p>".$ResulSl->__GET('Descripcion')."</p></section>";
+        echo "</li>";
+		}
+		?>
+     
         </ul>
     </div>
     <main>
@@ -134,14 +213,20 @@
 
         <div class="colum_imagenes">
             <h1>Conoce mas sobre nosotros</h1>  
-            <div class="fila1">
-            <img src="imagenes/verde.jpg">
-            <img src="imagenes/verde.jpg">
-        </div>
-        <div class="fila1">
-            <img src="imagenes/verde.jpg">
-            <img src="imagenes/verde.jpg">
-            </div>
+            
+              <?php 
+			foreach( $ResulConoceMas as $ReCM){
+			echo " <div class='fila1'>";
+			echo "<img src='imagenes/".$ReCM->__GET('URL')."'>";
+			echo "<img src='imagenes/".$ReCM->__GET('Image')."'>";	
+			echo "</div>";
+           		
+			}
+			?>
+            
+            
+            
+        
          </div>
             
         <div class="colum_noticias">
@@ -151,15 +236,23 @@
             
             <?php 
 			foreach( $ResulNoticias as $ResulNot){
-				echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
-            	echo "<img src='".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
-           		echo  "<div class='noticias_descripcion'>";
-              	echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
-              	echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
-            	echo "</div>                </div></a>";
+			echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
+            echo "<img src='imagenes/".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
+           echo  "<div class='noticias_descripcion'>";
+              echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
+              echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
+            echo "</div>                </div></a>";
+			
 			}
 			
 			 ?>
+            
+            
+            
+            
+            
+        
+          
                 </div>
         </div>
         </div>
@@ -180,41 +273,27 @@
         <div class="colum2">
             <h1>Redes Sociales</h1>
             
-            <div class="row">
-            <img src="iconos/fb_icono.png">
-            <a href="https://mail.google.com">Facebook </a>
-            </div>
-            <div class="row">
-            <img src="iconos/twiter1.png">
-             <a href="https://mail.google.com">Twiter </a>
-            </div>
-            <div class="row">
-            <img src="iconos/instagram1.png">
-             <a href="https://mail.google.com">Instagram </a>
-            </div>
-            <div class="row">
-            <img src="iconos/google_mas.png">
-             <a href="https://mail.google.com">Google+</a>
-            </div>
-            <div class="row">
-            <img src="iconos/youtube1.png">
-             <a href="https://mail.google.com">YouTube </a>
-            </div>
-            <div class="row">
-            <img src="iconos/linkedin1.png">
-             <a href="https://mail.google.com">Linkedin </a>
-            </div>
+            
+            <?php 
+			foreach( $ResulRedesSociales as $ReRS){
+			echo "<div class='row'>";
+			echo "<img src='imagenes/".$ReRS->__GET('Imagen')."'>";	
+			echo "<a href='https:/".$ReRS->__GET('Enlace')."'>".$ReRS->__GET('Descripcion');
+           		echo "</a></div>";
+			}
+			?>
+            
         </div>
         
         <div class="colum3">
             <h1> Contactanos</h1>
             <div class="row2">
                 <img src="iconos/mensaje1.png">
-                <label>paginaadministrable@upsjb.com</label>
+                <label><?php echo $Email; ?></label>
             </div>
             <div class="row2">
                 <img src="iconos/telefono1.png">
-                <label> 928467529</label>
+                <label> <?php echo $Telefono; ?></label>
             </div>
         </div>
         </div>
