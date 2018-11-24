@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<?php
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Noticias.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\NoticiasDAO.php');
+
+$Noticias = new Noticias();
+$NoticiasDAO = new NoticiasDAO();
+
+$ResulNoticias = array();//VARIABLE TIPO RESULTADO
+
+	$Noticias->__SET('Opcion', 'T');
+$ResulNoticias = $NoticiasDAO->Listar($Noticias); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+
+
+?>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -48,7 +62,7 @@
 			</div>
 			<div class="col-2-auto text-right">
 				<p>Usuario Administrador</p>
-				<p>Romero Ormeño, Camila</p>
+				<p>Romero Ormeï¿½o, Camila</p>
 			</div>
 			<div class="col-1 text-center align-self-center">
 				<button class="btn btn-outline-secondary"><img src="icono_config/icono_salir.png"></button>
@@ -58,7 +72,7 @@
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Acceso
@@ -69,11 +83,11 @@
 				    <a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
 				  </div>
 				</div>
-				
+
 
 
 				<!-- <a href="login.html" class="btn items">Acceso</a> -->
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Principal
@@ -81,10 +95,10 @@
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-					
+
 				  </div>
 				</div>
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
@@ -94,7 +108,7 @@
 				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
-				  
+
 					<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Conoce mas
@@ -103,7 +117,7 @@
 				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Slider
@@ -113,7 +127,7 @@
 				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
@@ -137,37 +151,41 @@
 		</section>
 
 		<section class="row contenido">
-			
+
 
 			<div class="col-md-8 offset-md-1">
 				<h4 class="text-muted mb-3">Lista de Noticias</h4>
 				<table class="table table-responsive">
 				    	<thead>
-				    		<th>Miniatura de la Noticia</th>
-				    		<th>Titulo</th>
-				    		<th>Posicion</th>
-				    		<th>Opciones</th>
+				    		<th>TITULO NOTICIA</th>
+				    		<th>DESCRIPCION</th>
+				    		<th>IMAGEN</th>
+<th>URL</th>
+
+								<th>Opciones</th>
 				    	</thead>
 				    	<tbody>
-				    		<tr>
-				    			<td><img src="icono_config/noticia_01.jpg" width="200" height="200"></td>
-				    			<td class="">Noticia Numero 01 - Paisaje Bali</td>
-				    			<td>1</td>
-				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_modificar.png"></button>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td><img src="icono_config/noticia_02.jpg" width="200" height="200"></td>
-				    			<td>Noticia Numero 02 - Paisaje Bali</td>
-				    			<td>2</td>
-				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_modificar.png"></button>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
-				    		
+								<?php
+					foreach( $ResulNoticias as $ReCM){
+					echo "<tr>";
+	echo "	<td>".$ReCM->__GET('TituloNoticia')."</td>";
+		echo "	<td>".$ReCM->__GET('Descripcion')."</td>";
+			echo "<td><img src='imagenes/".$ReCM->__GET('Imagen')."' width='150' height='150'></td>";
+echo "	<td>".$ReCM->__GET('URL')."</td>";
+
+
+				echo	"<td><a href='PHP/ELIMINAR/Eliminar_Noticias.php?a=".$ReCM->__GET('IdNoticias')."'><img src='img/icono_cerrar.png'></a>	</td>";
+
+
+
+
+echo "		</tr>";
+
+
+
+					}
+					?>
+
 				    	</tbody>
 				    </table>
 			</div>
