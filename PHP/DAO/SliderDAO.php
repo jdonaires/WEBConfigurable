@@ -1,6 +1,6 @@
 <?php
-require_once('PHP/DAL/DBAccess.php');
-require_once('PHP/BOL/Slider.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/DAL/DBAccess.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/BOL/Slider.php');
 
 class SliderDAO
 {

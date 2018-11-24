@@ -1,3 +1,20 @@
+<?php
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Slider.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\SliderDAO.php');
+
+$Slider = new Slider();
+$SliderDAO = new SliderDAO();
+
+/*SLIDER*/
+
+$ResulSlider = array();//VARIABLE TIPO RESULTADO
+
+    $Slider->__SET('Opcion', 'T');
+	$ResulSlider = $SliderDAO->Listar($Slider);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +78,7 @@
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Acceso
@@ -80,10 +97,10 @@
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-					
+
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
@@ -93,7 +110,7 @@
 				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
-				  
+
 					<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Conoce mas
@@ -102,7 +119,7 @@
 				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Slider
@@ -112,7 +129,7 @@
 				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
@@ -157,30 +174,24 @@
 				    		<th>Opcion</th>
 				    	</thead>
 				    	<tbody>
-				    		<tr>
-				    			<td><img src="https://images-blogger-opensocial.googleusercontent.com/gadgets/proxy?url=http%3A%2F%2Fdefinicionde.hugex.net%2Fwp-content%2Fuploads%2F2015%2F07%2Fe1001e86903d5fccba2a7e83a0547bd4.jpg&container=blogger&gadget=a&rewriteMime=image%2F*" width="150" height="150"></td>
-				    			<td class=""> Descripción de la imagen</td>
-				    			
-				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td><img src="https://mott.pe/noticias/wp-content/uploads/2016/11/Janette-Asche.jpg" width="150" height="150"></td>
-				    			<td>Descripción de la imagen</td>
-				    			
-				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button> 
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td><img src="https://www.paisajesimagenes.com/wp-content/uploads/paisajes-de-paris1.jpg" width="150" height="150"></td>
-				    			<td>Descripción de la imagen</td>
-				    			
-				    			<td>
-				    				<button class="btn btn-link"><img src="icono_config/icono_eliminar.png"></button>
-				    			</td>
-				    		</tr>
+                <?php
+          foreach( $ResulSlider as $ReCM){
+          echo "<tr>";
+          echo "<td><img src='imagenes/".$ReCM->__GET('Imagen')."' width='150' height='150'></td>";
+
+          echo "	<td>".$ReCM->__GET('Descripcion')."</td>";
+          echo "	<td>".$ReCM->__GET('Enlace')."</td>";
+        echo	"<td><a href='PHP/ELIMINAR/Eliminar_Slider.php?a=".$ReCM->__GET('IdSlider')."'><img src='img/icono_cerrar.png'></a>	</td>";
+
+
+
+
+echo "		</tr>";
+
+
+
+          }
+          ?>
 				    	</tbody>
 				    </table>
 			</div>

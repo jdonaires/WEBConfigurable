@@ -42,7 +42,7 @@ $NoticiasDAO = new NoticiasDAO();
 
 
 	$ResulNoticias = array();//VARIABLE TIPO RESULTADO
-	
+
     $Noticias->__SET('Opcion', 'T');
 	$ResulNoticias = $NoticiasDAO->Listar($Noticias); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
 
@@ -50,7 +50,7 @@ $NoticiasDAO = new NoticiasDAO();
 /*CONOCEMAS*/
 
 $ResulConoceMas = array();//VARIABLE TIPO RESULTADO
-	
+
     $ConoceMas->__SET('Opcion', 'T');
 	$ResulConoceMas = $ConoceMasDAO->Listar($ConoceMas);
 
@@ -58,55 +58,55 @@ $ResulConoceMas = array();//VARIABLE TIPO RESULTADO
 /*SLIDER*/
 
 $ResulSlider = array();//VARIABLE TIPO RESULTADO
-	
+
     $Slider->__SET('Opcion', 'T');
 	$ResulSlider = $SliderDAO->Listar($Slider);
-	
+
 /*REDES SOCIALES*/
 
 $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
-	
+
     $RedesSociales->__SET('Opcion', 'T');
 	$ResulRedesSociales = $RedesSocialesDAO->Listar($RedesSociales); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
-	
-	
-	
-	
+
+
+
+
 	/*Nosotros*/
     $ResulNosotros = array();//VARIABLE TIPO RESULTADO
     $Nosotros->__SET('Opcion', 'T');
 	$ResulNosotros = $NosotrosDAO->Listar($Nosotros);
-	
-	
+
+
 						foreach( $ResulNosotros as $ReNo){
-							
+
 							$DescripcionRuta=$ReNo->__GET('Descripcion');
-						
-						
+
+
 
 						}
-						
-						
-						
-							
+
+
+
+
 	/*Cabecera*/
     $ResulCabecera = array();//VARIABLE TIPO RESULTADO
     $Cabecera->__SET('Opcion', 'T');
 	$ResulCabecera = $CabeceraDAO->Listar($Cabecera);
-	
-	
+
+
 						foreach( $ResulCabecera as $ReCa){
-							
+
 							$Nombre=$ReCa->__GET('NombreOrganizacion');
 							$Email=$ReCa->__GET('Email');
 							$Telefono=$ReCa->__GET('Telefono');
 							$Logotipo=$ReCa->__GET('Logotipo');
-						
-						
+
+
 
 						}
 
-					
+
 ?>
 
 
@@ -120,7 +120,7 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
 	<link rel="stylesheet" href="css/fontello.css">
 	<link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/flexslider.css">
-    
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="js/jquery.flexslider.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -131,7 +131,7 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
         pauseOnHover: false,
     });
     });
-        
+
     </script>
 </head>
     <body style="background-color:#D3D8C8">
@@ -145,7 +145,7 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
                 <h1><?php echo $Nombre; ?></h1>
                 </div>
             </div>
-            
+
             <div class="colu2">
                 <div class="rowi">
                 <img src="iconos/mensaje1.png">
@@ -154,25 +154,25 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
                 <h1><?php echo $Telefono; ?></h1>
                 </div>
             <div class="rowi">
-            
-            
-             <?php 
+
+
+             <?php
 			foreach( $ResulRedesSociales as $ReRS){
-				
+
 				echo "<a href='https:/".$ReRS->__GET('Enlace')."'>";
-				echo "<img src='imagenes/".$ReRS->__GET('Imagen')."'>";	
+				echo "<img src='imagenes/".$ReRS->__GET('Imagen')."'>";
            		echo "</a>";
-			
+
 			}
-			
+
 			 ?>
-            
-            
-            
-            
-            
-            
-           
+
+
+
+
+
+
+
             </div>
         </div>
         </div>
@@ -189,9 +189,9 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
 			</nav>
 		</div>
 	</header>
-        <div class="flexslider">  
-    <ul class="slides"> 
-        <?php 
+        <div class="flexslider">
+    <ul class="slides">
+        <?php
 		foreach( $ResulSlider as $ResulSl){
         echo "<li>";
             echo "<a href='".$ResulSl->__GET('Enlace')."'><img src='imagenes/".$ResulSl->__GET('Imagen')."' alt=''></a>";
@@ -200,7 +200,7 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
         echo "</li>";
 		}
 		?>
-     
+
         </ul>
     </div>
     <main>
@@ -208,29 +208,29 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
         <div class="columnas">
 
         <div class="colum_imagenes">
-            <h1>Conoce mas sobre nosotros</h1>  
-            
-              <?php 
+            <h1>Conoce mas sobre nosotros</h1>
+
+              <?php
 			foreach( $ResulConoceMas as $ReCM){
 			echo " <div class='fila1'>";
-			echo "<img src='imagenes/".$ReCM->__GET('URL')."'>";
-			echo "<img src='imagenes/".$ReCM->__GET('Image')."'>";	
+			echo "<img src='FILE_IMAGE/".$ReCM->__GET('URL')."'>";
+			echo "<img src='FILE_IMAGE/".$ReCM->__GET('Image')."'>";	
 			echo "</div>";
-           		
+
 			}
 			?>
-            
-            
-            
-        
+
+
+
+
          </div>
-            
+
         <div class="colum_noticias">
             <h1 >Noticias</h1>
             <div class="fila2">
-            
-            
-            <?php 
+
+
+            <?php
 			foreach( $ResulNoticias as $ResulNot){
 			echo "<a href='".$ResulNot->__GET('URL')."'><div class='noticias_columna'>";
             echo "<img src='".$ResulNot->__GET('Imagen')."' alt='' class='noticias_img'>";
@@ -238,49 +238,49 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
               echo "<h2 class='noticias_titulo'>".$ResulNot->__GET('TituloNoticia')."</h2>";
               echo "<div class='noticias_txt'>".$ResulNot->__GET('Descripcion')."</div>";
             echo "</div>                </div></a>";
-			
+
 			}
-			
+
 			 ?>
-            
-            
-            
-            
-            
-        
-          
+
+
+
+
+
+
+
                 </div>
         </div>
         </div>
     </div>
-		
+
 	</main>
      <footer>
         <div class="container-footer-all">
     <div class="container-body">
         <div class="colum1">
             <h1>Nosotros</h1>
-            
+
             <p>
                 <?php echo $DescripcionRuta; ?>
             </p>
-            
+
         </div>
         <div class="colum2">
             <h1>Redes Sociales</h1>
-            
-            
-            <?php 
+
+
+            <?php
 			foreach( $ResulRedesSociales as $ReRS){
 			echo "<div class='row'>";
-			echo "<img src='imagenes/".$ReRS->__GET('Imagen')."'>";	
+			echo "<img src='imagenes/".$ReRS->__GET('Imagen')."'>";
 			echo "<a href='https:/".$ReRS->__GET('Enlace')."'>".$ReRS->__GET('Descripcion');
            		echo "</a></div>";
 			}
 			?>
-            
+
         </div>
-        
+
         <div class="colum3">
             <h1> Contactanos</h1>
             <div class="row2">
@@ -296,10 +296,10 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
         <div class="contenedor-footer">
 			<p class="copy">Copyright &copy; 2018 Pagina Administrable</p>
         </div>
-            
+
         </div>
     </footer>
-       
-    
+
+
     </body>
 </html>
