@@ -125,7 +125,7 @@ if(isset($_POST['BtnGuardar']))
 	<div class="container-fluid">
 		<header class="row">
 			<div class="col-3 col-xs-12">
-				<img  src="Imagenes/<?php echo	$Logotipo;?>" alt="Logo Empresa" class="img-fluid logo">
+				<img  src="<?php echo	$Logotipo;?>" alt="Logo Empresa" class="img-fluid logo">
 			</div>
 			<div class="col-1 offset-5 text-right">
 				<img  src="img/user.jpg" alt="Foto" class="rounded-circle foto" width="65" height="65">

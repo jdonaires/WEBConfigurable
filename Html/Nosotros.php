@@ -188,8 +188,9 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 			<div class="contenedor2">
 				<div class="colum_imagenes1">
             <div class="fila1">
-            <img src="../imagenes/<?php echo $r->__GET('Image1') ?>">
-			<img src="../imagenes/<?php echo $r->__GET('Image2') ?>">
+
+            <img src="../<?php echo $r->__GET('Image1') ?>">
+			<img src="../<?php echo $r->__GET('Image2') ?>">
         	</div>
 
 				</div>
@@ -213,7 +214,7 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 						<?php
 			foreach( $ResulRedesSociales as $ReRS){
 			echo "<div class='row'>";
-			echo "<img src='../imagenes/".$ReRS->__GET('Imagen')."'>";
+			echo "<img src='../".$ReRS->__GET('Imagen')."'>";
 			echo "<a href='https:/".$ReRS->__GET('Enlace')."'>".$ReRS->__GET('Descripcion');
            		echo "</a></div>";
 			}

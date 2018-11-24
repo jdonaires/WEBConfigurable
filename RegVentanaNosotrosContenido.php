@@ -64,8 +64,8 @@ if(isset($_POST['BtnGuardar']))
 	$per->__SET('IdInfoNostros', "0");
 	$per->__SET('Tema', $_POST['TxtTema']);
 	$per->__SET('Descripcion',        $_POST['TxtContenido']);
-	$per->__SET('Image1', "FILES_IMAGES".$_FILES['TxtImage1']['tmp_name']);
-	$per->__SET('Image2', "FILES_IMAGES".$_FILES['TxtImage2']['tmp_name']);
+	$per->__SET('Image1', "FILE_IMAGE/".$_FILES['TxtImage1']['name']);
+	$per->__SET('Image2', "FILE_IMAGE/".$_FILES['TxtImage2']['name']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 	echo "HolaInsertando";
