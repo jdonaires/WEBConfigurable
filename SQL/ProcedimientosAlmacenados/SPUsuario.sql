@@ -21,7 +21,7 @@ insert into Usuario (Nombres, Apellidos,Correo,Contraseña,Estado ) values(_Nomb
     if _Opcion='D' then
 
 Update Usuario set Estado=_Estado where IdUsuario=_IdUsuario ;
-   
+
    End If;
    END
    $$
@@ -36,11 +36,11 @@ BEGIN
 
  if _Opcion='L' then
 
-select * from usuario where Contraseña=_Contraseña and Correo=_Correo;
+select * from usuario where Contraseña=_Contraseña and Correo=_Correo and Estado='A';
 
    End IF;
-   
-   
+
+
  if _Opcion='T' then
 
 select * from usuario order by idusuario desc;

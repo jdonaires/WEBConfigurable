@@ -53,11 +53,15 @@ $perDAO = new CabeceraDAO();
 
 if(isset($_POST['BtnGuardar']))
 {
+
+
+
+
 	$per->__SET('IdContacto', "0");
 	$per->__SET('NombreOrganizacion', $_POST['TxtNombreOrganizacion']);
 	$per->__SET('Email',        $_POST['TxtEmail']);
 	$per->__SET('Telefono', $_POST['TxtTelefono']);
-	$per->__SET('Logotipo', $_POST['TxtLogotipo']);
+	$per->__SET('Logotipo', $_POST['TxtImagen']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 
@@ -244,7 +248,7 @@ if(isset($_POST['BtnGuardar']))
 					  	<div class="form-group row">
 					  		<div class="col-sm-4">Logotipo:</div>
 					    	<div class="col-sm-8">
-					      		<input type="file" id="archivo" name="TxtLogotipo">
+					      	<input type="file" id="archivo" name="TxtImagen">
 					    	</div>
 					  	</div>
 

@@ -1,6 +1,6 @@
 <?php
-require_once('PHP/DAL/DBAccess.php');
-require_once('PHP/BOL/Usuario.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/DAL/DBAccess.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/BOL/Usuario.php');
 
 class UsuarioDAO
 {
@@ -55,8 +55,8 @@ class UsuarioDAO
 				$per->__SET('Nombres', $r->Nombres);
 				$per->__SET('Apellidos', $r->Apellidos);
 				$per->__SET('Correo', $r->Correo);
-								$per->__SET('Contraseña', $r->Contraseña);
-
+				//$per->__SET('Contraseña', $r->Contraseña);
+$per->__SET('Estado', $r->Estado);
 
 				$result[] = $per;
 			}

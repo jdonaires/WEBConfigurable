@@ -55,13 +55,13 @@ if(isset($_POST['BtnGuardar']))
 	$Ruta_Actual_Img = $_FILES['TxtImagen']['tmp_name'];
 	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
 
-	echo  $_POST['TxtDescripcion'];
+
 	$per->__SET('IdNoticias', "0");
 	$per->__SET('TituloNoticia', $_POST['TxtTituloNoticia']);
 	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
 	$per->__SET('Imagen', "FILE_IMAGE/".$_FILES['TxtImagen']['name']);
 	$per->__SET('URL', $_POST['TxtURL']);
-	$per->__SET('Posicion', $_POST['TxtPosicion']);
+	$per->__SET('Posicion', "");
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 
@@ -267,7 +267,7 @@ if(isset($_POST['BtnGuardar']))
 
 
 					  	</div>
-					  	<div class="form-group row">
+					  	<!--<div class="form-group row">
 					    	<label for="posicion" class="col-sm-3 col-form-label">Posicion:</label>
 					    	<div class="col-sm-2">
 					      		<select name="TxtPosicion" id="posicion" class="form-control">
@@ -279,7 +279,7 @@ if(isset($_POST['BtnGuardar']))
 					    	</div>
 					  	</div>
 
-					 <!-- 	<div class="form-group row">
+					 	<div class="form-group row">
 					    	<label for="contenido" class="col-sm-3 col-form-label">Contenido de la Noticia:</label>
 					    	<div class="col-sm-8">
 					      		<textarea name="contenido" id="contenido" class="form-control" rows="5"></textarea>
@@ -289,9 +289,7 @@ if(isset($_POST['BtnGuardar']))
 					  	<div class="form-group row">
 					  		<div class="col-sm-3"></div>
 					  		<div class="col-sm-3">
-					      		<button class="btn btn-success text-center">
-					      			<img src="img/icono_regresar.png">&nbsp Retornar
-					      		</button>
+
 					    	</div>
 					    	<div class="col-sm-3">
 					      		<input type="submit" class="btn btn-success text-center" name="BtnGuardar" value="Guardar">

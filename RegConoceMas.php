@@ -60,8 +60,8 @@ if(isset($_POST['BtnGuardar']))
 
 	$per->__SET('IdConoceMas', "0");
 	$per->__SET('Descripcion', $_POST['TxtDescripcion']);
-	$per->__SET('URL', "FILES_IMAGEN/".$_FILES['TxtImagen1']['name']);
-	$per->__SET('Image', "FILES_IMAGEN/".$_FILES['TxtImagen2']['name']);
+	$per->__SET('URL', "FILES_IMAGE/".$_FILES['TxtImagen1']['name']);
+	$per->__SET('Image', "FILES_IMAGE/".$_FILES['TxtImagen2']['name']);
 	$per->__SET('IdUsuario', $ID);
 	$per->__SET('Opcion', "I");
 	$perDAO->Registrar($per);

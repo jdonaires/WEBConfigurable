@@ -213,8 +213,9 @@ $ResulRedesSociales = array();//VARIABLE TIPO RESULTADO
               <?php
 			foreach( $ResulConoceMas as $ReCM){
 			echo " <div class='fila1'>";
-			echo "<img src='FILE_IMAGE/".$ReCM->__GET('URL')."'>";
-			echo "<img src='FILE_IMAGE/".$ReCM->__GET('Image')."'>";	
+			echo "<img src='".$ReCM->__GET('URL')."'>";
+
+			echo "<img src='".$ReCM->__GET('Image')."'>";
 			echo "</div>";
 
 			}

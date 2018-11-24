@@ -1,3 +1,19 @@
+<?php
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\BOL\Usuario.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP\DAO\UsuarioDAO.php');
+
+
+$Usu = new Usuario();
+$UsuDAO = new UsuarioDAO();
+
+$ResulUsuario= array();//VARIABLE TIPO RESULTADO
+
+	$Usu->__SET('Opcion', 'T');
+$ResulUsuario = $UsuDAO->Listar($Usu); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,11 +77,11 @@
 		<section class="row menu">
 			<div class="col-12">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Acceso 
-				  </button> 
+				    Acceso
+				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
 				    <a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
@@ -80,10 +96,10 @@
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				    <a class="dropdown-item" href="RegCabecera.php">Registro Cabecera</a>
 					<a class="dropdown-item" href="RegNostrosIndex.php">Registro Nosotros Pie de Pagina</a>
-					
+
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Noticias
@@ -93,7 +109,7 @@
 				   <a class="dropdown-item" href="RegNoticia.php">Registro de Noticias</a>
 				  </div>
 				</div>
-				  
+
 					<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Conoce mas
@@ -102,7 +118,7 @@
 				   <a class="dropdown-item" href="Lista_ConoceMas.php">Lista Conoce mas</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Registro Slider
@@ -112,7 +128,7 @@
 				   <a class="dropdown-item" href="RegSlider.php">Registro Slider</a>
 				  </div>
 				</div>
-					
+
 				<div class="dropdown opcion_menu">
 				  <button class="btn btn-link items dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    Nosotros
@@ -153,27 +169,38 @@
 				<table class="table table-responsive">
 				    	<thead>
 				    		<th>ID</th>
-				    		<th>Tipo De Usuario</th>
+
 				    		<th>Nombres Y Apellidos</th>
 				    		<th>Email</th>
-				    		<th>Contraseña</th>
-				    		<th>Accesos</th>
-				    		<th>Modificar</th>
+
+
+				    		<th>Estado</th>
+								<th>Opcion</th>
 				    	</thead>
 				    	<tbody>
-				    		<tr>
-				    			<td>01</td>
-				    			<td class="">Usuario de Servicio</td>
-				    			<td>Juan Carlos Castilla Perez </td>
-				    			<td>juan.castilla.1997@gmail.com</td>
-				    			<td>123456</td>
-				    			<td>Administrador de Slider</td>
-				    			<td>
-				    				<button 
-				    				class="btn btn-link"><img src="icono_config/icono_modificar.png"> 
-				    			</button>
-				    			</td>
-				    		</tr>	
+								<?php
+					foreach( $ResulUsuario as $ReCM){
+					echo "<tr>";
+							echo "	<td>".$ReCM->__GET('IdUsuario')."</td>";
+			echo "	<td>".$ReCM->__GET('Nombres')." ".$ReCM->__GET('Apellidos')."</td>";
+					echo "	<td>".$ReCM->__GET('Correo')."</td>";
+					//echo "	<td>".$ReCM->__GET('Contraseña')."</td>";
+
+					echo "	<td>".$ReCM->__GET('Estado')."</td>";
+				echo	"<td><a href='PHP/ELIMINAR/Eliminar_Usuario.php?a=".$ReCM->__GET('IdUsuario')."'><img src='img/icono_cerrar.png'></a> </br>
+<a href='PHP/ELIMINAR/Activar_Usuario.php?a=".$ReCM->__GET('IdUsuario')."'><img src='img/icono_modificar.png'></a>
+
+				</td>";
+
+
+
+
+	echo "		</tr>";
+
+
+
+					}
+					?>
 				    	</tbody>
 				    </table>
 			</div>
@@ -186,10 +213,3 @@
 	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

@@ -42,8 +42,8 @@ $ResulCabecera = $CabeceraDAO->Listar($Cabecera);
 
 ?>
 <?php
-require_once('PHP/BOL/Usuario.php');
-require_once('PHP/DAO/UsuarioDao.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/BOL/Usuario.php');
+require_once('C:\xampp\htdocs\WEBConfigurable\PHP/DAO/UsuarioDao.php');
 
 $per = new Usuario();
 $perDAO = new UsuarioDAO();
@@ -51,18 +51,18 @@ $perDAO = new UsuarioDAO();
 if(isset($_POST['BtnGuardar']))
 {
 
-	$per->__SET('_IdUsuario', "0");
-	$per->__SET('_Nombres',          $_POST['TxtNombres']);
-	$per->__SET('_Apellidos',        $_POST['TxtApellidos']);
-	$per->__SET('_Correo', $_POST['TxtCorreo']);
-	$per->__SET('_Contraseña', $_POST['TxtContraseña']);
-	$per->__SET('_Estado', "A");
-	$per->__SET('_Opcion', $ID);
+	$per->__SET('IdUsuario', "0");
+	$per->__SET('Nombres',          $_POST['TxtNombres']);
+	$per->__SET('Apellidos',        $_POST['TxtApellidos']);
+	$per->__SET('Correo', $_POST['TxtCorreo']);
+	$per->__SET('Contraseña', $_POST['TxtContraseña']);
+	$per->__SET('Estado', "A");
+	$per->__SET('Opcion', "I");
 
 
 
 	$perDAO->Registrar($per);
-header('Location: RegUsuario.php');
+//header('Location: RegUsuario.php');
 }
 
 

@@ -5,7 +5,7 @@ DELIMITER $$
 in _IdImagenNosotros  int,
 in _Image varchar(45),
 in _IdUsuario int,
-in _Opcion varchar(45) 
+in _Opcion varchar(45)
 
  )
 BEGIN
@@ -20,7 +20,7 @@ insert into ImagenNosotros (Image, IdUsuario) values(_Image, _IdUsuario);
 
 Delete from ImagenNosotros where IdImagenNosotros =_IdImagenNosotros ;
 
-   
+
    End If;
    END
    $$
@@ -31,8 +31,8 @@ DELIMITER $$
      in _Opcion varchar(45)
  )
 BEGIN
-  
-   
+
+
  if _Opcion='T' then
 
 select * from ImagenNosotros order by IdImagenNosotros desc limit 1  ;
@@ -41,8 +41,8 @@ select * from ImagenNosotros order by IdImagenNosotros desc limit 1  ;
 
    END
    $$
-   
-   
+
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -66,7 +66,7 @@ insert into infonosotros (Titulo,Descripcion,Image1, Image2, IdUsuario ) values(
     if _Opcion='D' then
 
 delete  from infonosotros where IdInfoNosotros = _IdInfoNosotros;
-   
+
    End If;
    END
    $$
@@ -78,7 +78,7 @@ DELIMITER $$
  )
 BEGIN
 
-   
+
  if _Opcion='T' then
 
 select * from InfoNosotros order by idInfoNosotros desc limit 1;
@@ -87,7 +87,7 @@ select * from InfoNosotros order by idInfoNosotros desc limit 1;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -108,7 +108,7 @@ insert into Nosotros (Descripcion, IdUsuario ) values(_Descripcion, _IdUsuario )
     if _Opcion='D' then
 
 Delete from Nostros where IdNosotros= _IdNosotros;
-   
+
    End If;
    END
    $$
@@ -121,8 +121,8 @@ DELIMITER $$
 BEGIN
 
 
-   
-   
+
+
  if _Opcion='T' then
 
 select * from Nosotros order by IdNosotros desc limit 1;
@@ -131,7 +131,7 @@ select * from Nosotros order by IdNosotros desc limit 1;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -143,7 +143,7 @@ in _Imagen varchar(45) ,
 in _URL varchar(45) ,
 in _Posicion varchar(45) ,
 in _IdUsuario  int(11) ,
-in _Opcion varchar(45) 
+in _Opcion varchar(45)
 
  )
 BEGIN
@@ -158,7 +158,7 @@ insert into Noticias (TituloNoticia,Descripcion,Imagen,URL,Posicion,IdUsuario) v
 
 Delete from Noticias where IdNoticias =_IdNoticias ;
 
-   
+
    End If;
    END
    $$
@@ -171,8 +171,8 @@ DELIMITER $$
      in _Opcion varchar(45)
  )
 BEGIN
-  
-   
+
+
  if _Opcion='T' then
 
 select * from Noticias  order by IdNoticias desc limit 2  ;
@@ -181,7 +181,7 @@ select * from Noticias  order by IdNoticias desc limit 2  ;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -205,7 +205,7 @@ insert into Usuario (Nombres, Apellidos,Correo,Contraseña,Estado ) values(_Nomb
     if _Opcion='D' then
 
 Update Usuario set Estado=_Estado where IdUsuario=_IdUsuario ;
-   
+
    End If;
    END
    $$
@@ -220,11 +220,11 @@ BEGIN
 
  if _Opcion='L' then
 
-select * from usuario where Contraseña=_Contraseña and Correo=_Correo;
+select * from usuario where Contraseña=_Contraseña and Correo=_Correo and Estado='A';
 
    End IF;
-   
-   
+
+
  if _Opcion='T' then
 
 select * from usuario order by idusuario desc;
@@ -233,7 +233,7 @@ select * from usuario order by idusuario desc;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -244,7 +244,7 @@ in _Email varchar(45) ,
 in _Telefono varchar(45) ,
 in _Logotipo varchar(45) ,
 in _IdUsuario  int(11) ,
-in _Opcion varchar(45) 
+in _Opcion varchar(45)
 
  )
 BEGIN
@@ -261,7 +261,7 @@ insert into Cabecera (NombreOrganizacion,Email,Telefono,Logotipo,IdUsuario) valu
 Delete from Cabecera where IdContacto =_IdContacto ;
 
 
-   
+
    End If;
    END
    $$
@@ -272,8 +272,8 @@ DELIMITER $$
      in _Opcion varchar(45)
  )
 BEGIN
-  
-   
+
+
  if _Opcion='T' then
 
 select * from Cabecera order by IdContacto desc limit 1  ;
@@ -282,7 +282,7 @@ select * from Cabecera order by IdContacto desc limit 1  ;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -293,7 +293,7 @@ in _Enlace varchar(45) ,
 in _Imagen varchar(45) ,
 in _IdUsuario  int(11) ,
 
-in _Opcion varchar(45) 
+in _Opcion varchar(45)
 
  )
 BEGIN
@@ -311,7 +311,7 @@ insert into Slider(Descripcion,Enlace,Imagen,IdUsuario) values(_Descripcion,_Enl
 Delete from Slider where IdSlider =_IdSlider ;
 
 
-   
+
    End If;
    END
    $$
@@ -322,8 +322,8 @@ DELIMITER $$
      in _Opcion varchar(45)
  )
 BEGIN
-  
-   
+
+
  if _Opcion='T' then
 
 select * from Slider order by IdSlider desc limit 10  ;
@@ -332,7 +332,7 @@ select * from Slider order by IdSlider desc limit 10  ;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -344,7 +344,7 @@ in _Imagen varchar(45) ,
 in _IdUsuario  int(11) ,
 
 
-in _Opcion varchar(45) 
+in _Opcion varchar(45)
 
  )
 BEGIN
@@ -363,7 +363,7 @@ Delete from RedesSociales where IdRedesSociales =_IdRedesSociales ;
 
 
 
-   
+
    End If;
    END
    $$
@@ -374,8 +374,8 @@ DELIMITER $$
      in _Opcion varchar(45)
  )
 BEGIN
-  
-   
+
+
  if _Opcion='T' then
 
 select * from RedesSociales order by IdRedesSociales desc limit 10  ;
@@ -384,7 +384,7 @@ select * from RedesSociales order by IdRedesSociales desc limit 10  ;
 
    END
    $$
-   
+
    Use pagadmin	;
 
 DELIMITER $$
@@ -397,7 +397,7 @@ in _IdUsuario  int(11) ,
 
 
 
-in _Opcion varchar(45) 
+in _Opcion varchar(45)
 
  )
 BEGIN
@@ -417,7 +417,7 @@ Delete from Conocemas where IdConoceMas =_IdConoceMas ;
 
 
 
-   
+
    End If;
    END
    $$
@@ -428,8 +428,8 @@ DELIMITER $$
      in _Opcion varchar(45)
  )
 BEGIN
-  
-   
+
+
  if _Opcion='T' then
 
 select * from Conocemas order by IdConocemas desc limit 4  ;
@@ -438,6 +438,3 @@ select * from Conocemas order by IdConocemas desc limit 4  ;
 
    END
    $$
-   
-   
-   
