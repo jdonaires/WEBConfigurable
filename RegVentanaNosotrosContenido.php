@@ -10,12 +10,19 @@ $perDAO = new InfoNosotrosDAO();
 if(isset($_POST['BtnGuardar']))
 {
 	echo $_POST['TxtTema'];
+
 	echo "HolaInsertando";
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen1']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImagen1']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen2']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImagen2']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
 	$per->__SET('IdInfoNostros', "0");
 	$per->__SET('Tema', $_POST['TxtTema']);
 	$per->__SET('Descripcion',        $_POST['TxtContenido']);
-	$per->__SET('Image1', $_POST['TxtImage1']);
-	$per->__SET('Image2', $_POST['TxtImage2']);
+	$per->__SET('Image1', "FILE_IMAGE/".$_FILES['TxtImagen1']['name']);
+	$per->__SET('Image2', "FILE_IMAGE/".$_FILES['TxtImagen2']['name']);
 	$per->__SET('IdUsuario', "1");
 	$per->__SET('Opcion', "I");
 	echo "HolaInsertando";
@@ -198,7 +205,7 @@ header('Location: Agregar_Usuario.php');
                   
                   
                   
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
 					  	<div class="form-group row">
 					    	<label for="titulo" class="col-sm-3 col-form-label">Titulo de la Empresa:</label>
 					    	<div class="col-sm-8">

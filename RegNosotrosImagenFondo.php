@@ -9,9 +9,12 @@ $perDAO = new ImagenNosotrosDAO();
 if(isset($_POST['BtnGuardar']))
 {
 	
+	$Ruta_Destino = ($_SERVER['DOCUMENT_ROOT'].'/WEBConfigurable/FILE_IMAGE/'.$_FILES['TxtImagen']['name']);
+	$Ruta_Actual_Img = $_FILES['TxtImagen']['tmp_name'];
+	move_uploaded_file($Ruta_Actual_Img,$Ruta_Destino);
 	$per->__SET('IdImagenNostros', "0");
 	
-	$per->__SET('Image', $_POST['TxtImage']);
+	$per->__SET('Image', "FILE_IMAGE/".$_FILES['TxtImagen']['name']);
 	$per->__SET('IdUsuario', "1");
 	$per->__SET('Opcion', "I");
 
@@ -187,7 +190,7 @@ header('Location: Agregar_Usuario.php');
                   
                   
                   
-				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+				    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
 				    	<div class="form-group row">
 					  		<div class="col-sm-3">Seleccionar Archivo</div>
 					    	<div class="col-sm-8">
