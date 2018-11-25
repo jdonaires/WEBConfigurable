@@ -128,7 +128,7 @@ $ResulUsuario = $UsuDAO->Listar($Usu); //CARGAMOS LOS REGISTRO EN EL ARRAY RESUL
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<a class="dropdown-item" href="RegUsuario.php">Registro Usuario</a>
 						<a class="dropdown-item" href="Lista_De_Usuarios.php">Lista de Usuario</a>
-						<a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>
+							<!--	<a class="dropdown-item" href="RegPrivilegios.php">Privilegios</a>-->
 					</div>
 				</div>
 

@@ -91,38 +91,6 @@ CREATE TABLE IF NOT EXISTS `PagAdmin`.`Cabecera` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `PagAdmin`.`Permisos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PagAdmin`.`Permisos` (
-  `IdPermisos` INT NOT NULL,
-  `Permiso` VARCHAR(45) NULL,
-  PRIMARY KEY (`IdPermisos`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `PagAdmin`.`UsuarioPermi`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PagAdmin`.`UsuarioPermi` (
-  `IdUsuarioPermiso` INT NOT NULL,
-  `IdUsuario` INT NOT NULL,
-  `IdPermisos` INT NOT NULL,
-  PRIMARY KEY (`IdUsuarioPermiso`),
-  INDEX `fk_UsuarioPermi_Usuario1_idx` (`IdUsuario` ASC) ,
-  INDEX `fk_UsuarioPermi_Permisos1_idx` (`IdPermisos` ASC),
-  CONSTRAINT `fk_UsuarioPermi_Usuario1`
-    FOREIGN KEY (`IdUsuario`)
-    REFERENCES `PagAdmin`.`Usuario` (`IdUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_UsuarioPermi_Permisos1`
-    FOREIGN KEY (`IdPermisos`)
-    REFERENCES `PagAdmin`.`Permisos` (`IdPermisos`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `PagAdmin`.`InfoNosotros`
